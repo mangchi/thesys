@@ -9,10 +9,12 @@
 ###  frontend/admin
 ####  실행
 ####  cd frontend/admin
+####  npm install
 ####  npm run dev
 
 
 ###  frontend/user
 ####  실행
 ####  cd frontend/user
+####  npm install
 ####  npm run dev
