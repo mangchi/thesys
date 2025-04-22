@@ -31,5 +31,12 @@
         "Git Bash": {
             "source": "Git Bash"
         }
-    }
-}
+    },
+
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        }
+      }
+    
+    
