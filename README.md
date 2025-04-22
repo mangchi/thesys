@@ -8,9 +8,11 @@
 
 ###  frontend/admin
 ####  실행
+####  cd frontend/admin
+####  npm run dev
 
 
 ###  frontend/user
 ####  실행
 ####  cd frontend/user
-####  npm run 
+####  npm run dev
