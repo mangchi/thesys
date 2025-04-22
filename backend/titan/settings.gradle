@@ -1,0 +1,11 @@
+pluginManagement {
+	repositories {
+		maven { url 'https://repo.spring.io/milestone' }
+		maven { url 'https://repo.spring.io/snapshot' }
+		gradlePluginPortal()
+	}
+	// plugins {
+    //     id 'jvm-toolchain-management' version '0.5.0' 
+    // }
+}
+rootProject.name = 'titan'
