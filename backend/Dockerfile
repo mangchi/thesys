@@ -8,11 +8,8 @@ COPY gradle gradle
 # Copy build files
 COPY build.gradle settings.gradle ./
 
-# Ensure gradlew has execute permissions
-RUN chmod +x ./gradlew
-
-# Pre-download dependencies (cache optimization)
-RUN ./gradlew build -x test || return 0
+# Ensure gradlew has execute permissions and pre-download dependencies (cache optimization)
+RUN chmod +x ./gradlew && ./gradlew build -x test || return 0
 
 # Copy the entire source code
 COPY . .
