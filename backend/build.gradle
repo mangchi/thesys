@@ -14,12 +14,6 @@ java {
 	}
 }
 
-// toolchainManagement {
-//     jdkProviders {
-//         adoptopenjdk()
-//     }
-// }
-
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
