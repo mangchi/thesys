@@ -10,6 +10,7 @@
 ####  실행
 ####  cd frontend/admin
 ####  npm install
+####  npm i --save-dev @types/node
 ####  npm run dev
 
 
