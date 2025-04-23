@@ -5,10 +5,9 @@ spring:
   application:
     name: thesys-backend
   datasource:
-    # url: jdbc:mysql://localhost:3306/thesys?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul
-    url: jdbc:mysql://localhost:3306/thesys?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://thesys.biz:33306/thesys?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
     username: thesys
-    password: "1q2w3e4r!"
+    password: 1q2w3e4r!
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
@@ -21,4 +20,4 @@ spring:
 logging:
   level:
     root: INFO
-    org.springframework: DEBUG
+    "[org.springframework]": DEBUG
