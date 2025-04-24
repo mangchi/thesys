@@ -8,12 +8,12 @@ services:
     networks:
       - app-net
 
-  frontend-admin:
-    build: ./frontend/admin
-    ports:
-      - "3001:3001"
-    networks:
-      - app-net
+  # frontend-admin:
+  #   build: ./frontend/admin
+  #   ports:
+  #     - "3001:3001"
+  #   networks:
+  #     - app-net
   
   # frontend-user:
   #   build: ./frontend/user

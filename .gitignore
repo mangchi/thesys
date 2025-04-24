@@ -1,0 +1,12 @@
+backend/logs/rollingFile.log
+backend/logs/logfile.log
+backend/logs/archive/rollingFile.log_2025-04-24.gz
+backend/.DS_Store
+backend/logs/.DS_Store
+backend/src/.DS_Store
+backend/src/main/.DS_Store
+backend/src/main/java/.DS_Store
+backend/src/main/java/com/.DS_Store
+backend/src/main/java/com/thesys/.DS_Store
+backend/src/main/java/com/thesys/titan/.DS_Store
+.DS_Store

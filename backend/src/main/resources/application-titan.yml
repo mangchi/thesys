@@ -1,0 +1,23 @@
+---
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  titan:
+    connection-timeout: 10000
+    graph: thesys
+    password: admin
+    read-timeout: 10000
+    url: http://localhost:8182
+    username: admin
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
