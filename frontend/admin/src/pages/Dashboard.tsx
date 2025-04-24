@@ -1,4 +1,5 @@
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import { Box, Card, CardContent, Typography } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PeopleIcon from '@mui/icons-material/People';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -37,7 +38,8 @@ const Dashboard = () => {
       </Typography>
       <Grid container spacing={3}>
         {stats.map((item, index) => (
-          <Grid item xs={12} sm={6} md={3} key={index}>
+          // <Grid item xs={12} sm={6} md={3} key={index}>
+          <Grid item xs={12} sm={6} md={3} key={index} {...(item as any)}>
             <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', padding: 2 }}>
               <Box sx={{ marginRight: 2 }}>{item.icon}</Box>
               <CardContent sx={{ padding: 0 }}>
