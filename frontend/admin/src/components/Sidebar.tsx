@@ -1,6 +1,5 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -9,7 +8,6 @@ import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -20,6 +18,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { useAuthStore } from '../stores/auth';
 
 const drawerWidth = 240;
 
@@ -62,7 +61,7 @@ const AppBar = styled(MuiAppBar, {
     {
       props: ({ open }) => open,
       style: {
-        width: `calc(100% - ${drawerWidth}px)`,
+        // width: `calc(100% - ${drawerWidth}px)`,
         marginLeft: `${drawerWidth}px`,
         transition: theme.transitions.create(['margin', 'width'], {
           easing: theme.transitions.easing.easeOut,
@@ -84,7 +83,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function Sidebar() {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const user = useAuthStore((state) => state.user);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -99,7 +99,8 @@ export default function Sidebar() {
       <CssBaseline />
       {/* <AppBar open={open}> */}
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
+          {/* <Toolbar sx={{ justifyContent: 'space-between' }}> */}
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -114,8 +115,20 @@ export default function Sidebar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            sx={{
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+            }}
+            variant="h6"
+            noWrap
+            component="div"
+          >
             The System
+          </Typography>
+          <Typography sx={{ marginLeft: 'auto' }} variant="body1">
+            👤 {user?.name || '게스트'}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -151,7 +164,7 @@ export default function Sidebar() {
         <Divider /> */}
         <List>
           {[
-            { text: 'Dashboard', to: '/' },
+            { text: 'Dashboard', to: '/dashboard' },
             { text: 'User', to: '/User' },
             // { text: 'Settings', to: '/settings' },
           ].map(({ text, to }, index) => (
