@@ -6,10 +6,11 @@ export default function Signup() {
     <Box
       sx={{
         height: '100vh',
+        width: '100vw',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#f3f4f6',
+        backgroundColor: '#f4f6f8',
       }}
     >
       <Paper elevation={3} sx={{ padding: 4, width: 360 }}>
