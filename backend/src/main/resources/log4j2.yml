@@ -1,0 +1,64 @@
+---
+Configuration:
+  Appenders:
+    Console:
+      PatternLayout:
+        pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1}:%L - %msg%n'
+      name: Console_Appender
+      target: SYSTEM_OUT
+    File:
+      PatternLayout:
+        pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1}:%L - %msg%n'
+      fileName: ${log-path}/logfile.log
+      name: File_Appender
+    RollingFile:
+      - DefaultRollOverStrategy:
+          Delete:
+            IfAccumulatedFileCount:
+              exceeds: 31
+            basePath: ${log-path}/archive
+            maxDepth: '1'
+        PatternLayout:
+          pattern: '[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n'
+        Policies:
+          TimeBasedTriggeringPolicy:
+            Interval: 1
+            modulate: true
+        fileName: ${log-path}/rollingFile.log
+        filePattern: ${log-path}/archive/rollingFile.log_%d{yyyy-MM-dd}.gz
+        name: RollingFile_Appender
+  Loggers:
+    Logger:
+      - AppenderRef:
+          - ref: Console_Appender
+          - ref: File_Appender
+          - ref: RollingFile_Appender
+        additivity: false
+        level: debug
+        name: org.springframework
+      - AppenderRef:
+          - ref: Console_Appender
+          - ref: File_Appender
+          - ref: RollingFile_Appender
+        additivity: false
+        level: debug
+        name: com.thesys.titan
+      - AppenderRef:
+          - ref: Console_Appender
+          - ref: File_Appender
+          - ref: RollingFile_Appender
+        additivity: false
+        level: debug
+        name: org.mybatis
+    Root:
+      AppenderRef:
+        - ref: Console_Appender
+        - ref: File_Appender
+        - ref: RollingFile_Appender
+      level: info
+  Properties:
+    Property:
+      name: log-path
+      value: logs
+  name: Default
+  status: warn

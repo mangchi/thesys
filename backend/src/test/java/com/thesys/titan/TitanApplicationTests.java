@@ -7,10 +7,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TitanApplicationTests {
 
 	@Test
-	// This test ensures that the Spring application context loads successfully.
-	@Test
 	void contextLoads() {
-		throw new UnsupportedOperationException("Test not implemented yet.");
+		// This test will fail if the application context cannot start
+		// or if there are any issues with the configuration.
+		// You can add more specific tests here as needed.
+		// For example, you can test specific beans or configurations.
+		// This is just a placeholder to ensure the application context loads
+		// successfully.
+		System.out.println("Application context loaded successfully.");
 	}
 
 }

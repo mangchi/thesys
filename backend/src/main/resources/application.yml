@@ -1,23 +1,89 @@
+---
 server:
+  compression:
+    enabled: true
+    mime-types:
+      - text/html
+      - text/xml
+      - text/plain
+      - text/css
+      - text/javascript
+      - application/javascript
+      - application/json
+    min-response-size: 1024
   port: 8080
-
+  servlet:
+    context-path: /
+    session:
+      cookie:
+        http-only: true
+        secure: false
+      timeout: 30m
 spring:
-  application:
-    name: thesys-backend
+  profiles:
+    active: local
+    group:
+      dev: dev
+      local: local
+    resources:
+      static-locations: files:./src/main/resources/statics/
+---
+debug: false
+logging:
+  config: classpath:log4j2.yml
+mybatis:
+  configuration:
+    jdbc-type-for-null: 'NULL'
+    map-underscore-to-camel-case: true
+  mapper-locations: /mapper/**/*.xml
+  type-aliases-package: com.thesys.titan.common.vo,com.thesys.titan.**.vo
+---
+##### localprofile #####
+spring:
+  cloud.vault:
+    app-role:
+      role-id: 5cf80ec1-c717-f9c1-540a-efbce42b01b1
+      secret-id: c95a6b20-4322-0468-2109-b07b4febca4a
+    authentication: approle
+    kv:
+      backend: secret
+      default-context: thesys/dev
+      enabled: true
+    ssl:
+      trust-store: classpath:truststore.jks
+      trust-store-password: changeit
+    uri: https://mangchinas.synology.me:8200
+  config:
+    activate:
+      on-profile: local
+    import: vault://
   datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ${userPwd}
     url: jdbc:mysql://thesys.biz:33306/thesys?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
     username: thesys
-    password: 1q2w3e4r!
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL8Dialect
-
-logging:
-  level:
-    root: INFO
-    "[org.springframework]": DEBUG
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  web:
+    resources:
+      static-locations: file:./src/main/resources/static/
+---
+springdoc:
+  api-docs:
+    enabled: true
+    groups:
+      enabled: true
+    path: /api-docs
+    version: OPENAPI_3_0
+  default-consumes-media-type: application/json
+  default-produces-media-type: application/json
+  paths-to-match: /api/**
+  swagger-ui:
+    disable-swagger-default-url: true
+    doc-expansion: none
+    operations-sorter: alpha
+    path: /swagger-ui.html
+    tags-sorter: alpha
