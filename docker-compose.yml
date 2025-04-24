@@ -8,19 +8,19 @@ services:
     networks:
       - app-net
 
-  frontend-admin:
-    build: ./frontend/admin
-    ports:
-      - "3001:3001"
-    networks:
-      - app-net
+  # frontend-admin:
+  #   build: ./frontend/admin
+  #   ports:
+  #     - "3001:3001"
+  #   networks:
+  #     - app-net
   
-  frontend-user:
-    build: ./frontend/user
-    ports:
-      - "3000:3000"
-    networks:
-      - app-net
+  # frontend-user:
+  #   build: ./frontend/user
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - app-net
 
 networks:
   app-net:
