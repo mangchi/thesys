@@ -32,11 +32,9 @@
             "source": "Git Bash"
         }
     },
-
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.fixAll.eslint": "explicit"
-        }
-      }
-    
-    
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    },
+    "java.compile.nullAnalysis.mode": "automatic"
+}
