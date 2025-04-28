@@ -23,9 +23,9 @@ spring:
   profiles:
     active: local
     group:
-      # dev: dev
+      dev: dev
       local: local
-      # prod: prod
+      prod: prod
     include:
       - oauth
       - titan

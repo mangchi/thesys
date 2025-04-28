@@ -51,8 +51,9 @@ public class ControllerAspect {
 					handleListArgument((List<?>) obj);
 				}
 			}
-
-			log.debug(methodSignature.getName() + " param:{}", joinPoint.getArgs());
+			if (null != joinPoint.getArgs() && joinPoint.getArgs().length > 0) {
+				log.debug("ControllerAspect param:{}", joinPoint.getArgs()[0]);
+			}
 		} catch (Exception e) {
 			log.error("ControllerAspect error:", e);
 		}
