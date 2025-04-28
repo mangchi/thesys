@@ -1,34 +1,34 @@
 -- This SQL script creates tables in a MySQL database.
 
 -- user_roles 테이블에서 users 참조를 삭제 (외래키 제약조건 제거)
-ALTER TABLE user_roles DROP FOREIGN KEY fk_user_roles_user;
+ALTER TABLE user_role DROP FOREIGN KEY fk_user_role_user;
 
 -- user_roles 테이블에서 roles 참조를 삭제 (외래키 제약조건 제거)
-ALTER TABLE user_roles DROP FOREIGN KEY fk_user_roles_role;
+ALTER TABLE user_role DROP FOREIGN KEY fk_user_roles_role;
 
 -- role_permissions 테이블에서 roles 참조를 삭제 (외래키 제약조건 제거)
-ALTER TABLE role_permissions DROP FOREIGN KEY fk_role_permissions_role;
+ALTER TABLE role_permission DROP FOREIGN KEY fk_role_permission_role;
 
 -- user_rolrole_permissionses 테이블에서 permissionses 참조를 삭제 (외래키 제약조건 제거)
-ALTER TABLE role_permissions DROP FOREIGN KEY fk_role_permissions_permission;
+ALTER TABLE role_permission DROP FOREIGN KEY fk_role_permission_permission;
 
 -- users 테이블 삭제
-DROP TABLE IF EXISTS users ;
+DROP TABLE IF EXISTS user ;
 
 -- roles 테이블 삭제
-DROP TABLE IF EXISTS roles ;
+DROP TABLE IF EXISTS role ;
 
 -- user_roles 테이블 삭제
-DROP TABLE IF EXISTS user_roles ;
+DROP TABLE IF EXISTS user_role ;
 
 -- permissions 테이블 삭제
 DROP TABLE IF EXISTS permissions ;
 
 -- role_permissions 테이블 삭제
-DROP TABLE IF EXISTS role_permissions ;
+DROP TABLE IF EXISTS role_permission ;
 
 -- 사용자 테이블
-CREATE TABLE users (
+CREATE TABLE user (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '사용자 ID',
     username VARCHAR(100) NOT NULL UNIQUE COMMENT '사용자명',
     password VARCHAR(255) NOT NULL COMMENT '비밀번호 (암호화)',
@@ -44,7 +44,7 @@ CREATE TABLE users (
 
 
 -- 역활 테이블
-CREATE TABLE roles (
+CREATE TABLE role (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '역할 ID',
     name VARCHAR(50) NOT NULL UNIQUE COMMENT '역할 이름 (예: ADMIN, USER)',
     description VARCHAR(255) COMMENT '역할 설명',
@@ -54,21 +54,21 @@ CREATE TABLE roles (
 
 
 -- 사용자-역할 매핑 테이블
-CREATE TABLE IF NOT EXISTS user_roles (
+CREATE TABLE IF NOT EXISTS user_role (
     user_id BIGINT NOT NULL COMMENT '사용자 ID',
     role_id BIGINT NOT NULL COMMENT '역할 ID',
     PRIMARY KEY (user_id, role_id),
-    CONSTRAINT fk_user_roles_user FOREIGN KEY (user_id)
-        REFERENCES users(id)
+    CONSTRAINT fk_user_role_user FOREIGN KEY (user_id)
+        REFERENCES user(id)
         ON DELETE CASCADE ON UPDATE CASCADE ,
-    CONSTRAINT fk_user_roles_role FOREIGN KEY (role_id)
-        REFERENCES roles(id)
+    CONSTRAINT fk_user_role_role FOREIGN KEY (role_id)
+        REFERENCES role(id)
         ON DELETE CASCADE ON UPDATE CASCADE 
 ) ENGINE=InnoDB COMMENT='사용자와 역할 간의 매핑 테이블';
 
 
 -- 권한 테이블
-CREATE TABLE permissions (
+CREATE TABLE permission (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '권한 ID',
     code VARCHAR(100) NOT NULL UNIQUE COMMENT '권한 코드 (예: USER_READ, POST_WRITE)',
     description VARCHAR(255) COMMENT '권한 설명',
@@ -80,14 +80,14 @@ CREATE TABLE permissions (
 
 -- 역할-권한 매핑 테이블
 
-CREATE TABLE role_permissions (
+CREATE TABLE role_permission (
     role_id BIGINT NOT NULL COMMENT '역할 ID',
     permission_id BIGINT NOT NULL COMMENT '권한 ID',
     PRIMARY KEY (role_id, permission_id),
-    CONSTRAINT fk_role_permissions_role FOREIGN KEY (role_id) 
-        REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE ,
-    CONSTRAINT fk_role_permissions_permission FOREIGN KEY (permission_id) 
-        REFERENCES permissions(id) ON DELETE CASCADE ON UPDATE CASCADE 
+    CONSTRAINT fk_role_permission_role FOREIGN KEY (role_id) 
+        REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE ,
+    CONSTRAINT fk_role_permission_permission FOREIGN KEY (permission_id) 
+        REFERENCES permission(id) ON DELETE CASCADE ON UPDATE CASCADE 
 ) COMMENT='역할과 권한 간의 매핑 테이블';
 
 
