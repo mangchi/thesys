@@ -26,12 +26,10 @@ public class DAO {
 	 */
 	public int insert(String queryId, Object params) {
 		return sqlSession.insert(queryId, params);
-
 	}
 
 	public int insertByJob(String queryId, Object params) {
 		return sqlSession.insert(queryId, params);
-
 	}
 
 	/**
