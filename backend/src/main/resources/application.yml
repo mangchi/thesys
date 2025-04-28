@@ -23,12 +23,21 @@ spring:
   profiles:
     active: local
     group:
-      dev: dev
+      # dev: dev
       local: local
+      # prod: prod
+    include:
+      - oauth
+      - titan
     resources:
       static-locations: files:./src/main/resources/statics/
 ---
-debug: false
+cloud:
+  aws:
+#    s3:
+#      bucket: hr-portal-backend
+    region:
+      static: ap-southeast-2
 logging:
   config: classpath:log4j2.yml
 mybatis:
@@ -38,7 +47,7 @@ mybatis:
   mapper-locations: /mapper/**/*.xml
   type-aliases-package: com.thesys.titan.common.vo,com.thesys.titan.**.vo
 ---
-##### localprofile #####
+##### local #####
 spring:
   cloud.vault:
     app-role:
@@ -59,14 +68,117 @@ spring:
     import: vault://
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password: ${userPwd}
-    url: jdbc:mysql://thesys.biz:33306/thesys?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
-    username: thesys
+    hikari:
+      connection-init-sql: SELECT 1
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      minimum-idle: 1
+    # url: jdbc:mysql://thesys.biz:33306/thesys?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&useUnicode=true&characterEncoding=utf8
   devtools:
     livereload:
       enabled: true
     restart:
       enabled: true
+  primary:
+    datasource:
+      hikari:
+        maximum-pool-size: 10
+        pool-name: titan-primary-cp
+  secondary:
+    datasource:
+      hikari:
+        maximum-pool-size: 10
+        pool-name: titan-secondary-cp
+  web:
+    resources:
+      static-locations: file:./src/main/resources/static/
+---
+##### dev #####
+spring:
+  cloud.vault:
+    app-role:
+      role-id: 5cf80ec1-c717-f9c1-540a-efbce42b01b1
+      secret-id: c95a6b20-4322-0468-2109-b07b4febca4a
+    authentication: approle
+    kv:
+      backend: secret
+      default-context: thesys/dev
+      enabled: true
+    ssl:
+      trust-store: classpath:truststore.jks
+      trust-store-password: changeit
+    uri: https://mangchinas.synology.me:8200
+  config:
+    activate:
+      on-profile: dev
+    import: vault://
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-init-sql: SELECT 1
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      minimum-idle: 1
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  primary:
+    datasource:
+      hikari:
+        maximum-pool-size: 10
+        pool-name: titan-primary-cp
+  secondary:
+    datasource:
+      hikari:
+        maximum-pool-size: 10
+        pool-name: titan-secondary-cp
+  web:
+    resources:
+      static-locations: file:./src/main/resources/static/
+---
+##### prod #####
+spring:
+  cloud.vault:
+    app-role:
+      role-id: 5cf80ec1-c717-f9c1-540a-efbce42b01b1
+      secret-id: c95a6b20-4322-0468-2109-b07b4febca4a
+    authentication: approle
+    kv:
+      backend: secret
+      default-context: thesys/dev
+      enabled: true
+    ssl:
+      trust-store: classpath:truststore.jks
+      trust-store-password: changeit
+    uri: https://mangchinas.synology.me:8200
+  config:
+    activate:
+      on-profile: prod
+    import: vault://
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-init-sql: SELECT 1
+      connection-timeout: 30000
+      maximum-pool-size: 10
+      minimum-idle: 1
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  primary:
+    datasource:
+      hikari:
+        maximum-pool-size: 10
+        pool-name: titan-primary-cp
+  secondary:
+    datasource:
+      hikari:
+        maximum-pool-size: 10
+        pool-name: titan-secondary-cp
   web:
     resources:
       static-locations: file:./src/main/resources/static/

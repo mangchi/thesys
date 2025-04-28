@@ -34,7 +34,7 @@ Configuration:
           - ref: File_Appender
           - ref: RollingFile_Appender
         additivity: false
-        level: debug
+        level: error
         name: org.springframework
       - AppenderRef:
           - ref: Console_Appender

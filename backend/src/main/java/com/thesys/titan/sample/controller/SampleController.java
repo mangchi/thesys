@@ -2,6 +2,7 @@ package com.thesys.titan.sample.controller;
 
 import com.thesys.titan.common.valid.ValidGroups;
 import com.thesys.titan.common.valid.ValidHandle;
+import com.thesys.titan.constants.MessageConstants;
 import com.thesys.titan.sample.dto.SampleDto;
 import com.thesys.titan.sample.service.SampleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -49,8 +50,6 @@ public class SampleController {
     private final MessageSourceAccessor messageSource;
 
     private static final String USE_YN = "useYn"; // 상수 정의
-    private static final String MSG_SUCCESS = "msg.success"; // 상수 정의
-    private static final String MSG_FAIL = "msg.fail"; // 상수 정의
 
     /**
      * 샘플 조회 서비스
@@ -68,10 +67,10 @@ public class SampleController {
     public ResponseEntity<Map<String, Object>> list(HttpServletRequest ignoredRequest) {
         Map<String, Object> result = new HashMap<>();
         try {
-            result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
@@ -93,16 +92,7 @@ public class SampleController {
     @Parameter(name = "useYn", description = "사용 여부, query string")
     public ResponseEntity<Map<String, Object>> listByParam(@RequestParam Map<String, Object> params) {
 
-        Map<String, Object> result = new HashMap<>();
-        try {
-            result.put("list", sampleService.getSampleListWhere(params));
-            result.put("msg", messageSource.getMessage(MSG_SUCCESS));
-            return ResponseEntity.ok().body(result);
-        } catch (Exception e) {
-            log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
-        }
+        return processListRequest(params);
     }
 
     /**
@@ -121,15 +111,18 @@ public class SampleController {
     public ResponseEntity<Map<String, Object>> listByBody(
             @io.swagger.v3.oas.annotations.parameters.RequestBody(content = @Content(schema = @Schema(implementation = SampleDto.class))) @RequestBody Map<String, Object> params) {
 
+        return processListRequest(params);
+    }
+
+    private ResponseEntity<Map<String, Object>> processListRequest(Map<String, Object> params) {
         Map<String, Object> result = new HashMap<>();
         try {
             result.put("list", sampleService.getSampleListWhere(params));
-            result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
-            // e.printStackTrace();
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
@@ -156,11 +149,11 @@ public class SampleController {
         try {
             result.put("info", sampleService.getSample(params));
             result.put("info1", sampleService.getSample(params));
-            result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
@@ -189,11 +182,11 @@ public class SampleController {
         Map<String, Object> result = new HashMap<>();
         try {
             result.put("info", sampleService.getSample(params));
-            result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
@@ -217,11 +210,11 @@ public class SampleController {
         Map<String, Object> result = new HashMap<>();
         try {
             result.put("info", sampleService.getSample(params));
-            result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
@@ -244,11 +237,11 @@ public class SampleController {
         Map<String, Object> result = new HashMap<>();
         try {
             result.put("info", sampleService.getSampleMap(params));
-            result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }
@@ -274,11 +267,10 @@ public class SampleController {
             @RequestBody @Validated(ValidGroups.CreateValid.class) SampleDto dto,
             BindingResult bindingResult) {
         Map<String, Object> result = new HashMap<>();
-        List<Map<String, Object>> invalidFields = null;
+        List<Map<String, Object>> invalidFields = new ArrayList<>();
         if (bindingResult.hasErrors()) {
             log.error("createSample NOT VALID PARAMETERS");
-            invalidFields = validHandle.validateHandling(bindingResult);
-
+            invalidFields.addAll(validHandle.validateHandling(bindingResult));
         }
         if (dto.getUseYn() > 1) {
             Map<String, Object> invalidField = new HashMap<>();
@@ -293,14 +285,14 @@ public class SampleController {
         try {
             int cnt = sampleService.createSample(dto);
             if (cnt > 0) {
-                result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             } else {
-                result.put("msg", messageSource.getMessage(MSG_FAIL));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             }
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
 
@@ -330,14 +322,14 @@ public class SampleController {
         try {
             int cnt = sampleService.createSampleMap(params);
             if (cnt > 0) {
-                result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             } else {
-                result.put("msg", messageSource.getMessage(MSG_FAIL));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             }
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
 
@@ -366,14 +358,14 @@ public class SampleController {
         try {
             int cnt = sampleService.createSampleMaps(params);
             if (cnt > 0) {
-                result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             } else {
-                result.put("msg", messageSource.getMessage(MSG_FAIL));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             }
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
 
@@ -413,13 +405,12 @@ public class SampleController {
         try {
             int cnt = sampleService.createSamples(list);
             if (cnt > 0) {
-                result.put("msg", messageSource.getMessage(MSG_FAIL));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             }
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
-            e.printStackTrace();
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
 
@@ -457,13 +448,13 @@ public class SampleController {
         try {
             int cnt = sampleService.updateSample(dto);
             if (cnt > 0) {
-                result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             } else {
                 result.put("msg", messageSource.getMessage("error.updateNotFound"));
             }
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
 
@@ -510,13 +501,13 @@ public class SampleController {
         try {
             int cnt = sampleService.deleteSample(dto);
             if (cnt > 0) {
-                result.put("msg", messageSource.getMessage(MSG_SUCCESS));
+                result.put("msg", messageSource.getMessage(MessageConstants.MSG_SUCCESS));
             } else {
                 result.put("msg", messageSource.getMessage("error.deleteNotFound"));
             }
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
 
@@ -539,7 +530,7 @@ public class SampleController {
             return ResponseEntity.ok().body(result);
         } catch (Exception e) {
             log.error(e.getMessage());
-            result.put("msg", messageSource.getMessage(MSG_FAIL));
+            result.put("msg", messageSource.getMessage(MessageConstants.MSG_FAIL));
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
         }
     }

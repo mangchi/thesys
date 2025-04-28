@@ -110,7 +110,7 @@ CREATE TABLE i18n_messages (
 );
 
 -- Code 테이블에서 CodeGroup 참조를 삭제 (외래키 제약조건 제거)
-ALTER TABLE code DROP FOREIGN KEY fk_code_group;
+ALTER TABLE code DROP FOREIGN KEY fk_code_group_id;
 
 -- Code 테이블 삭제
 DROP TABLE IF EXISTS code ;
@@ -122,36 +122,34 @@ DROP TABLE IF EXISTS code_group ;
 
 CREATE TABLE IF NOT EXISTS code_group (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '고유 ID, 각 코드 그룹을 식별하는 기본키',
-    group_code VARCHAR(50) NOT NULL UNIQUE COMMENT '그룹 코드, 고유한 코드 그룹 식별자 (예: USER_TYPE)',
-    name_ko VARCHAR(255) COMMENT '그룹명 (한글), 코드 그룹을 한글로 설명',
+    group_code VARCHAR(10) NOT NULL UNIQUE COMMENT '그룹 코드, 고유한 코드 그룹 식별자 (예: USER_TYPE)',
+    name_kr VARCHAR(255) COMMENT '그룹명 (한글), 코드 그룹을 한글로 설명',
     name_en VARCHAR(255) COMMENT '그룹명 (영문), 코드 그룹을 영어로 설명',
     description TEXT COMMENT '그룹 설명, 코드 그룹에 대한 추가적인 설명',
-    created_at DATETIME COMMENT '생성 일시, 코드 그룹이 생성된 날짜와 시간',
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시, 코드 그룹이 생성된 날짜와 시간',
     updated_at DATETIME COMMENT '수정 일시, 코드 그룹이 마지막으로 수정된 날짜와 시간',
-    created_by VARCHAR(100) COMMENT '생성자, 코드 그룹을 만든 사용자 또는 시스템',
-    updated_by VARCHAR(100) COMMENT '수정자, 코드 그룹을 마지막으로 수정한 사용자 또는 시스템'
+    created_by VARCHAR(50) NOT NULL COMMENT '생성자, 코드 그룹을 만든 사용자 또는 시스템',
+    updated_by VARCHAR(50) COMMENT '수정자, 코드 그룹을 마지막으로 수정한 사용자 또는 시스템'
 ) COMMENT '코드 그룹 테이블, 다양한 코드 항목을 그룹화하여 관리';
-
 
 -- 코드 테이블
 
 CREATE TABLE IF NOT EXISTS code (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '고유 ID, 각 코드 항목을 식별하는 기본키',
     group_id BIGINT NOT NULL COMMENT '코드 그룹 ID, 해당 코드가 속한 그룹의 ID (code_group 테이블의 id)',
-    code VARCHAR(50) NOT NULL COMMENT '코드 값, 실제 코드 값 (예: "ADMIN", "USER")',
-    value_ko VARCHAR(255) COMMENT '코드명 (한글), 코드 값에 대한 한글 설명 (예: "관리자", "일반 사용자")',
-    value_en VARCHAR(255) COMMENT '코드명 (영문), 코드 값에 대한 영어 설명 (예: "Administrator", "User")',
+    code VARCHAR(10) NOT NULL COMMENT '코드 값, 실제 코드 값 (예: "ADMIN", "USER")',
+    name_kr VARCHAR(255) COMMENT '코드명 (한글), 코드 값에 대한 한글 설명 (예: "관리자", "일반 사용자")',
+    name_en VARCHAR(255) COMMENT '코드명 (영문), 코드 값에 대한 영어 설명 (예: "Administrator", "User")',
     sort_order INT DEFAULT 0 COMMENT '정렬 순서, 코드 항목을 표시할 때의 순서를 지정',
-    is_active BOOLEAN DEFAULT TRUE COMMENT '활성화 여부, 해당 코드가 활성화된 상태인지 여부 (TRUE: 활성화, FALSE: 비활성화)',
+    use_yn BOOLEAN DEFAULT TRUE COMMENT '사 여부, 해당 코드가 활성화된 상태인지 여부 (TRUE: 사, FALSE: 미사)',
     description TEXT COMMENT '코드 설명, 코드에 대한 추가적인 설명',
-    created_at DATETIME COMMENT '생성 일시, 코드 항목이 생성된 날짜와 시간',
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시, 코드 항목이 생성된 날짜와 시간',
     updated_at DATETIME COMMENT '수정 일시, 코드 항목이 마지막으로 수정된 날짜와 시간',
-    created_by VARCHAR(100) COMMENT '생성자, 코드 항목을 만든 사용자 또는 시스템',
-    updated_by VARCHAR(100) COMMENT '수정자, 코드 항목을 마지막으로 수정한 사용자 또는 시스템',
-    CONSTRAINT fk_code_to_group FOREIGN KEY (code_group_id) 
+    created_by VARCHAR(50) NOT NULL COMMENT '생성자, 코드 항목을 만든 사용자 또는 시스템',
+    updated_by VARCHAR(50) COMMENT '수정자, 코드 항목을 마지막으로 수정한 사용자 또는 시스템',
+    CONSTRAINT fk_code_group_id FOREIGN KEY (group_id) 
         REFERENCES code_group(id) ON DELETE CASCADE ON UPDATE CASCADE 
 ) COMMENT '코드 테이블';
-
 
 
 -- 게시판 테이블

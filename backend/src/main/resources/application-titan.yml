@@ -1,16 +1,10 @@
 ---
----
 spring:
   config:
     activate:
       on-profile: local
   titan:
-    connection-timeout: 10000
-    graph: thesys
-    password: admin
-    read-timeout: 10000
-    url: http://localhost:8182
-    username: admin
+    service: service
 ---
 spring:
   config:

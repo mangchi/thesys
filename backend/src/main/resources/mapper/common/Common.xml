@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Common">
+    <!-- code -->
+    <select id="selectCode" resultType="hashmap">
+        SELECT grpCd.group_code grpCd
+             , grpCd.name_kr grpName  
+             , cd.name_kr cdNm
+             , cd.code cd
+        FROM code_group grpCd
+        JOIN code cd
+        ON grpCd.id = cd.group_id   
+    </select>
+</mapper>

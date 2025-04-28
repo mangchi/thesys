@@ -1,22 +1,27 @@
 package com.thesys.titan.aspect;
 
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Map;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
+
 import com.thesys.titan.annotation.Page;
 import com.thesys.titan.common.vo.CommonDto;
 import com.thesys.titan.common.vo.PageInfo;
+import com.thesys.titan.constants.TitanConstants;
 import com.thesys.titan.exception.BizException;
+
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
-import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-import org.springframework.web.servlet.ModelAndView;
-import java.lang.reflect.Field;
-
-import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @Component
@@ -27,10 +32,6 @@ public class ControllerAspect {
 	public void commonPointcut() {
 	}
 
-	@Value("${spring.profiles.active}")
-	private String activeProfile;
-
-	@SuppressWarnings("unchecked")
 	@Before("commonPointcut()")
 	public void callBeforeController(JoinPoint joinPoint) throws Throwable {
 		try {
@@ -40,8 +41,10 @@ public class ControllerAspect {
 			for (Object obj : joinPoint.getArgs()) {
 				if (obj instanceof HttpServletRequest) {
 					handleHttpServletRequest(methodSignature);
-				} else if (obj instanceof Map) {
-					handleMapArgument((Map<String, Object>) obj, page);
+				} else if (obj instanceof Map<?, ?>) {
+					@SuppressWarnings("unchecked")
+					Map<String, Object> paramMap = (Map<String, Object>) obj;
+					handleMapArgument(paramMap, page);
 				} else if (obj instanceof CommonDto commondto) {
 					handleCommonDto(commondto);
 				} else if (obj instanceof List) {
@@ -62,16 +65,17 @@ public class ControllerAspect {
 	}
 
 	private void handleMapArgument(Map<String, Object> param, Page page) {
-		if (page != null && param.containsKey("pageNo") && param.containsKey("rowPerPage")) {
-			int startRow = Integer.parseInt(String.valueOf(param.get("rowPerPage")))
-					* (Integer.parseInt(String.valueOf(param.get("pageNo"))) - 1);
+		if (page != null && param.containsKey(TitanConstants.PAGE_NO)
+				&& param.containsKey(TitanConstants.ROW_PER_PAGE)) {
+			int startRow = Integer.parseInt(String.valueOf(param.get(TitanConstants.ROW_PER_PAGE)))
+					* (Integer.parseInt(String.valueOf(param.get(TitanConstants.PAGE_NO))) - 1);
 			param.put("startRow", startRow);
 			PageInfo pageInfo = PageInfo.builder()
-					.pageNo(Integer.parseInt(String.valueOf(param.get("pageNo"))))
-					.rowPerPage(Integer.parseInt(String.valueOf(param.get("rowPerPage"))))
+					.pageNo(Integer.parseInt(String.valueOf(param.get(TitanConstants.PAGE_NO))))
+					.rowPerPage(Integer.parseInt(String.valueOf(param.get(TitanConstants.ROW_PER_PAGE))))
 					.orderBy(page.sort().equals("ASC") ? "DESC" : "ASC").build();
 			pageInfo.setStartRow(startRow);
-			param.put("pageInfo", pageInfo);
+			param.put(TitanConstants.PAGE_INFO, pageInfo);
 		}
 	}
 
@@ -98,18 +102,20 @@ public class ControllerAspect {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	@AfterReturning(pointcut = "commonPointcut()", returning = "returnValue")
 	public void callAfterController(JoinPoint joinPoint, Object returnValue) throws BizException, Throwable {
 		MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
 		try {
 			handleHttpServletRequestArgs(joinPoint);
-			if (returnValue instanceof ResponseEntity) {
-				handleResponseEntity(joinPoint, methodSignature, (ResponseEntity<Map<String, Object>>) returnValue);
+			if (returnValue instanceof ResponseEntity<?> responseEntity
+					&& responseEntity.getBody() instanceof Map<?, ?>) {
+				@SuppressWarnings("unchecked")
+				ResponseEntity<Map<String, Object>> safeResponseEntity = (ResponseEntity<Map<String, Object>>) responseEntity;
+				handleResponseEntity(joinPoint, methodSignature, safeResponseEntity);
 			}
-			if (returnValue instanceof ModelAndView modelandview) {
-				handleModelAndView(modelandview);
-			}
+			// if (returnValue instanceof ModelAndView modelandview) {
+			// handleModelAndView(modelandview);
+			// }
 		} catch (Exception e) {
 			log.debug("error:{}", (Object[]) e.getStackTrace());
 		} finally {
@@ -131,24 +137,26 @@ public class ControllerAspect {
 		Map<String, Object> map = res.getBody();
 		if (page != null) {
 			for (Object obj : joinPoint.getArgs()) {
-				if (obj instanceof Map<?, ?> paramMap && map != null) {
-					if (paramMap instanceof Map<?, ?> safeParamMap) {
-						updatePageInfo((Map<String, Object>) safeParamMap, map);
-					}
+				if (obj instanceof Map<?, ?> paramMap && map != null && paramMap instanceof Map<?, ?> safeParamMap &&
+						safeParamMap.keySet().stream().allMatch(String.class::isInstance) &&
+						safeParamMap.values().stream().allMatch(Object.class::isInstance)) {
+					@SuppressWarnings("unchecked")
+					Map<String, Object> castedParamMap = (Map<String, Object>) safeParamMap;
+					updatePageInfo(castedParamMap, map);
 				}
 			}
 		}
 	}
 
 	private void updatePageInfo(Map<String, Object> param, Map<String, Object> map) {
-		if (param.containsKey("pageInfo")) {
-			PageInfo pageInfo = (PageInfo) param.get("pageInfo");
+		if (param.containsKey(TitanConstants.PAGE_INFO)) {
+			PageInfo pageInfo = (PageInfo) param.get(TitanConstants.PAGE_INFO);
 			int totalPages = calculateTotalPages(pageInfo);
 			pageInfo.setTotPage(totalPages);
 			pageInfo.setIsFirstPage(pageInfo.getPageNo() == 1);
 			pageInfo.setIsLastPage(pageInfo.getPageNo() == totalPages);
 			pageInfo.setIsFirstPerPage(pageInfo.getPageNo() > 10);
-			map.put("pageInfo", pageInfo);
+			map.put(TitanConstants.PAGE_INFO, pageInfo);
 		}
 	}
 
@@ -158,9 +166,9 @@ public class ControllerAspect {
 				: (int) (pageInfo.getTotCount() / pageInfo.getRowPerPage()) + 1;
 	}
 
-	private void handleModelAndView(ModelAndView modelandview) {
-		// Add logic if needed
-	}
+	// private void handleModelAndView(ModelAndView modelandview) {
+	// // Add logic if needed
+	// }
 
 	@AfterThrowing(pointcut = "commonPointcut()", throwing = "ex")
 	public void errorInterceptor(JoinPoint joinPoint, Throwable ex) throws Exception {

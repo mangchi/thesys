@@ -11,14 +11,14 @@ import org.springframework.context.annotation.Configuration;
 @ConfigurationProperties
 public class VaultConfig {
 
-    // private String dbName;
-    // private String dbHostName;
-    // private String secondaryDbName;
-    // private String secondaryDbHostName;
-    // private String port;
+    private String dbName;
+    private String dbHostName;
+    private String secondaryDbName;
+    private String secondaryDbHostName;
+    private String port;
     private String dbUser;
     private String userPwd;
-    // private String jwtSecret;
-    // private String tokenExpired;
+    private String jwtSecret;
+    private String tokenExpired;
 
 }

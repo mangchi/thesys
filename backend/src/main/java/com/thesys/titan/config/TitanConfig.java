@@ -11,13 +11,5 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "spring.titan")
 public class TitanConfig {
 
-    private String titanUrl;
-    private String titanUsername;
-    private String titanPassword;
-    private String titanGraphName;
-    private String titanGraphType;
-    private String titanGraphVersion;
-    private String titanGraphSchema;
-    private String titanGraphSchemaVersion;
-
+    private String service;
 }
