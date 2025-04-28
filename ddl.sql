@@ -4,7 +4,7 @@
 ALTER TABLE user_role DROP FOREIGN KEY fk_user_role_user;
 
 -- user_roles 테이블에서 roles 참조를 삭제 (외래키 제약조건 제거)
-ALTER TABLE user_role DROP FOREIGN KEY fk_user_roles_role;
+ALTER TABLE user_role DROP FOREIGN KEY fk_user_role_role;
 
 -- role_permissions 테이블에서 roles 참조를 삭제 (외래키 제약조건 제거)
 ALTER TABLE role_permission DROP FOREIGN KEY fk_role_permission_role;
