@@ -30,7 +30,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <Box>
+    <Box sx={{ p: 3 }}>
       {/* <Box sx={{ mt: 8, px: 3 }}> */}
       {/* // <Box sx={{ padding: 3 }}> */}
       <Typography variant="h5" mb={3}>
