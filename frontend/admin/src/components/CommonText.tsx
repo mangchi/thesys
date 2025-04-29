@@ -6,7 +6,7 @@ interface TypograpyComponentProps extends TypographyProps {
   variantType?: TypographyType;
 }
 //TODO: 수정중
-export function TypograpyComponent({
+export function CommonText({
   variantType = 'body',
   children,
   sx,
@@ -18,11 +18,13 @@ export function TypograpyComponent({
     title: {
       fontSize: '2rem',
       fontWeight: 700,
+      padding: '0.5rem 0',
     },
     subtitle: {
       fontSize: '1.5rem',
       fontWeight: 600,
       color: theme.palette.text.secondary,
+      padding: '0.5rem 0',
     },
     body: {
       fontSize: '1rem',

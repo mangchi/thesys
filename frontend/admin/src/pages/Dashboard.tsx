@@ -4,6 +4,8 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PeopleIcon from '@mui/icons-material/People';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import { PageContainer } from '../components/PageContainer';
+import { CommonText } from '../components/CommonText';
 
 const Dashboard = () => {
   const stats = [
@@ -30,12 +32,13 @@ const Dashboard = () => {
   ];
 
   return (
-    <Box sx={{ p: 3 }}>
-      {/* <Box sx={{ mt: 8, px: 3 }}> */}
-      {/* // <Box sx={{ padding: 3 }}> */}
-      <Typography variant="h5" mb={3}>
+    <PageContainer>
+      {/* <Box sx={{ p: 3 }}> */}
+
+      <CommonText variantType="title"> Dashboard</CommonText>
+      {/* <Typography variant="h5" mb={3}>
         Dashboard
-      </Typography>
+      </Typography> */}
       <Grid container spacing={3}>
         {stats.map((item, index) => (
           // <Grid item xs={12} sm={6} md={3} key={index}>
@@ -52,7 +55,7 @@ const Dashboard = () => {
           </Grid>
         ))}
       </Grid>
-    </Box>
+    </PageContainer>
   );
 };
 

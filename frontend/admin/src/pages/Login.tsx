@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/auth';
 import { FakerUsers } from '../data/user';
 import { useState } from 'react';
+import { CommonText } from '../components/CommonText';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -37,9 +38,10 @@ const Login = () => {
       }}
     >
       <Paper elevation={3} sx={{ padding: 4, width: 360 }}>
-        <Typography variant="h5" gutterBottom>
+        <CommonText variantType="subtitle"> 로그인 </CommonText>
+        {/* <Typography variant="h5" gutterBottom>
           Login
-        </Typography>
+        </Typography> */}
 
         <Stack spacing={2}>
           <TextField

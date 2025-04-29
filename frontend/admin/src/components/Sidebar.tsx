@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -19,6 +19,18 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { useAuthStore } from '../stores/auth';
+import {
+  Avatar,
+  Button,
+  ClickAwayListener,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  SxProps,
+} from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { blue } from '@mui/material/colors';
 
 const drawerWidth = 240;
 
@@ -83,8 +95,24 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function Sidebar() {
   const theme = useTheme();
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
   const user = useAuthStore((state) => state.user);
+  const [dialogOpen, setDialogOpen] = useState(false);
+
+  const styles: SxProps = {
+    position: 'absolute',
+    top: 60,
+    right: 0,
+    left: 0,
+    zIndex: 1,
+    minWidth: '200px',
+    border: '1px solid',
+    borderRadius: '8px',
+    p: 2,
+    bgcolor: 'background.paper',
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -92,6 +120,26 @@ export default function Sidebar() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleDialogOpen = () => {
+    setDialogOpen((prev) => !prev);
+    // setDialogOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+  };
+
+  const handleLogout = () => {
+    useAuthStore.getState().logout(); // 로그아웃 함수 호출
+    navigate('/login'); // 로그인 페이지로 이동
+    setDialogOpen(false);
+  };
+
+  const handleProfileChange = () => {
+    navigate('/profile'); // 개인정보 변경 페이지로 이동
+    setDialogOpen(false);
   };
 
   return (
@@ -127,9 +175,75 @@ export default function Sidebar() {
           >
             The System
           </Typography>
-          <Typography sx={{ marginLeft: 'auto' }} variant="body1">
-            👤 {user?.name || '게스트'}
-          </Typography>
+
+          <ClickAwayListener
+            mouseEvent="onMouseDown"
+            touchEvent="onTouchStart"
+            onClickAway={handleDialogClose}
+          >
+            <Box sx={{ position: 'relative', marginLeft: 'auto' }}>
+              <Button
+                sx={{
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+                // variant="body1"
+                onClick={handleDialogOpen}
+              >
+                <Avatar sx={{ bgcolor: blue[700] }}>
+                  <AccountCircleIcon />
+                </Avatar>
+                <Typography sx={{ color: 'white' }}>{user?.name || 'Guest'}</Typography>
+                {/* 👤 {user?.name || '게스트'} */}
+              </Button>
+              {dialogOpen ? (
+                <>
+                  <Box sx={styles}>
+                    <List>
+                      <ListItem disablePadding>
+                        <ListItemButton onClick={handleProfileChange}>
+                          <ListItemText sx={{ bgcolor: blue[700] }} primary="개인정보 변경" />
+                        </ListItemButton>
+                      </ListItem>
+                      <ListItem disablePadding>
+                        <ListItemButton onClick={handleLogout}>
+                          <ListItemText sx={{ bgcolor: blue[700] }} primary="로그아웃" />
+                        </ListItemButton>
+                      </ListItem>
+                    </List>
+
+                    <Button onClick={handleDialogClose} color="primary">
+                      닫기
+                    </Button>
+                  </Box>
+                </>
+              ) : null}
+            </Box>
+          </ClickAwayListener>
+          {/* <Dialog open={dialogOpen} onClose={handleDialogClose}>
+            <DialogTitle>사용자 메뉴</DialogTitle>
+            <DialogContent>
+              <List>
+                <ListItem disablePadding>
+                  <ListItemButton onClick={handleProfileChange}>
+                    <ListItemText primary="개인정보 변경" />
+                  </ListItemButton>
+                </ListItem>
+                <ListItem disablePadding>
+                  <ListItemButton onClick={handleLogout}>
+                    <ListItemText primary="로그아웃" />
+                  </ListItemButton>
+                </ListItem>
+              </List>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handleDialogClose} color="primary">
+                닫기
+              </Button>
+            </DialogActions>
+          </Dialog> */}
         </Toolbar>
       </AppBar>
       <Drawer

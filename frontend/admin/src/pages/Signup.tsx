@@ -1,5 +1,6 @@
 import { Box, Paper, Typography, TextField, Button, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { CommonText } from '../components/CommonText';
 
 export default function Signup() {
   return (
@@ -14,11 +15,13 @@ export default function Signup() {
       }}
     >
       <Paper elevation={3} sx={{ padding: 4, width: 360 }}>
-        <Typography variant="h5" gutterBottom>
+        <CommonText variantType="subtitle"> 회원가입 </CommonText>
+        {/* <Typography variant="h5" gutterBottom>
           📝 회원가입
-        </Typography>
+        </Typography> */}
 
         <Stack spacing={2}>
+          <TextField label="이름" variant="outlined" fullWidth />
           <TextField label="이메일" variant="outlined" fullWidth />
           <TextField label="비밀번호" type="password" variant="outlined" fullWidth />
           <TextField label="비밀번호 확인" type="password" variant="outlined" fullWidth />

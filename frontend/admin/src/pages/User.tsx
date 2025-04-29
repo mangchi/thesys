@@ -1,7 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { Box, Typography, TextField, Button, Stack } from '@mui/material';
 import { ColDef } from 'ag-grid-community';
-import { GridComponent } from '../components/GridComponent';
+import { Grid } from '../components/Grid';
+import { PageContainer } from '../components/PageContainer';
+import { CommonText } from '../components/CommonText';
 
 interface User {
   id: number;
@@ -44,11 +46,11 @@ export default function UserSearchPage() {
   };
 
   return (
-    <Box sx={{ p: 3 }}>
-      {/* 제목 */}
-      <Typography variant="h5" mb={3}>
+    <PageContainer>
+      <CommonText variantType="title"> User</CommonText>
+      {/* <Typography variant="h5" mb={3}>
         User
-      </Typography>
+      </Typography> */}
 
       {/* 검색 폼 */}
       <Box component="form" onSubmit={handleSearch} sx={{ mb: 2 }}>
@@ -67,7 +69,7 @@ export default function UserSearchPage() {
         </Stack>
       </Box>
 
-      <GridComponent columnDefs={columnDefs} rowData={filtered} height={500} />
-    </Box>
+      <Grid columnDefs={columnDefs} rowData={filtered} height={500} />
+    </PageContainer>
   );
 }

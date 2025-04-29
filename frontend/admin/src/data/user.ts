@@ -9,4 +9,9 @@ export const FakerUsers = [
       password: 'admin',
       name: '관리자',
     },
+    {
+      email: 'daehoon',
+      password: '1234',
+      name: '강대훈',
+    },
   ];
