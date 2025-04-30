@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "MysqlCodeGenerator",
+            "request": "launch",
+            "mainClass": "com.thesys.titan.generator.MysqlCodeGenerator",
+            "projectName": "backend"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-TitanApplication<backend>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

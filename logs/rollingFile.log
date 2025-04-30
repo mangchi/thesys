@@ -1,0 +1,456 @@
+[DEBUG] 2025-05-01 00:09:19.282 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:09:19.285 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:09:19.286 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:10:16.997 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:10:17.001 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:10:17.002 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:11:54.932 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:11:54.936 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:11:54.936 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:11:54.936 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:11:54.936 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:11:54.937 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:11:54.937 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:11:54.937 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:11:54.937 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:11:54.937 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:11:54.938 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:11:54.938 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:11:54.938 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:11:54.939 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:11:54.939 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:11:54.939 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:11:54.939 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:11:54.939 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:11:54.939 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:11:54.939 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:11:54.940 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:11:54.940 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:11:54.940 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:11:54.940 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:11:54.940 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:14:28.464 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:14:28.468 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:14:28.468 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:14:28.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:14:28.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:14:28.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:14:28.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:14:28.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:14:28.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:14:28.470 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:14:28.470 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:14:28.470 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:14:28.471 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:14:28.472 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:14:28.472 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:14:28.472 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:14:28.472 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:14:28.472 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:14:28.473 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:14:28.473 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:14:28.473 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:14:28.473 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:14:28.473 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:14:28.473 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:14:28.474 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:18:23.842 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:18:23.846 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:18:23.846 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:18:23.846 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:18:23.846 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:18:23.846 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:18:23.847 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:18:23.847 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:18:23.847 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:18:23.847 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:18:23.847 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:18:23.848 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:18:23.848 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:18:23.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:18:23.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:18:23.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:18:23.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:18:23.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:18:23.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:18:23.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:18:23.850 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:18:23.850 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:18:23.850 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:18:23.850 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:18:23.851 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:20:18.461 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:20:18.466 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:20:18.466 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:20:18.467 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:20:18.467 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:20:18.467 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:20:18.467 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:20:18.467 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:20:18.468 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:20:18.468 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:20:18.468 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:20:18.468 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:20:18.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:20:18.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:20:18.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:20:18.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:20:18.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:20:18.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:20:18.469 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:20:18.470 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:20:18.470 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:20:18.470 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:20:18.470 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:20:18.470 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:20:18.471 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:20:58.120 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:20:58.124 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:20:58.125 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:20:58.125 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:20:58.125 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:20:58.125 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:20:58.125 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:20:58.126 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:20:58.126 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:20:58.126 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:20:58.126 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:20:58.126 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:20:58.127 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:20:58.127 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:20:58.127 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:20:58.127 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:20:58.127 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:20:58.128 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:20:58.128 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:20:58.128 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:20:58.128 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:20:58.128 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:20:58.128 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:20:58.129 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:20:58.129 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:22:47.721 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:22:47.725 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:22:47.725 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:22:47.726 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:22:47.726 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:22:47.726 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:22:47.726 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:22:47.726 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:22:47.727 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:22:47.727 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:22:47.727 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:22:47.727 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:22:47.728 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:22:47.728 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:22:47.728 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 사용자명
+[DEBUG] 2025-05-01 00:22:47.728 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:22:47.728 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 실명
+[DEBUG] 2025-05-01 00:22:47.729 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:22:47.729 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:22:47.729 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:22:47.729 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:22:47.729 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:22:47.730 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:22:47.730 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:22:47.730 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:28:31.939 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:28:31.943 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:28:31.943 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:28:31.944 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:28:31.944 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:28:31.944 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:28:31.944 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:28:31.944 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:28:31.945 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:28:31.945 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:28:31.945 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:28:31.945 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:28:31.946 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:28:31.946 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:28:31.946 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:28:31.946 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:28:31.946 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:28:31.947 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:28:31.947 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:28:31.947 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:28:31.947 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:28:31.947 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:28:31.947 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:28:31.948 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:28:31.948 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:30:20.761 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:30:20.766 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:30:20.766 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:30:20.766 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:30:20.766 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:30:20.766 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:30:20.767 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:30:20.767 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:30:20.767 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:30:20.767 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:30:20.768 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:30:20.768 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:30:20.768 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:30:20.768 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:30:20.769 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:30:20.769 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:30:20.769 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:30:20.769 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:30:20.769 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:30:20.769 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:30:20.769 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:30:20.770 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:30:20.770 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:30:20.770 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:30:20.770 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:34:04.377 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:34:04.381 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:34:04.382 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:34:04.382 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:34:04.382 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:34:04.382 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:34:04.382 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:34:04.383 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:34:04.383 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:34:04.383 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:34:04.383 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:34:04.383 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:34:04.384 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:34:04.384 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:34:04.384 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:34:04.384 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:34:04.385 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:34:04.385 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:34:04.385 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:34:04.385 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:34:04.385 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:34:04.385 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:34:04.386 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:34:04.386 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:34:04.386 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:34:54.090 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:34:54.094 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:34:54.095 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:34:54.095 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:34:54.095 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:34:54.095 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:34:54.096 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:34:54.096 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:34:54.096 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:34:54.096 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:34:54.097 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:34:54.097 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:34:54.098 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:34:54.098 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:34:54.098 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:34:54.098 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:34:54.099 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:34:54.099 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:34:54.099 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:34:54.099 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:34:54.099 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:34:54.100 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:34:54.100 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:34:54.100 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:34:54.100 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 00:50:26.029 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 00:50:26.033 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:50:26.033 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:50:26.034 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:50:26.034 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:50:26.034 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:50:26.034 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:50:26.035 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:50:26.035 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:50:26.035 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:50:26.035 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:50:26.035 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:50:26.036 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 00:50:26.036 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 00:50:26.036 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 00:50:26.036 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 00:50:26.036 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 00:50:26.037 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 00:50:26.037 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 00:50:26.037 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 00:50:26.037 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 00:50:26.037 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 00:50:26.037 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 00:50:26.037 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 00:50:26.038 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 01:11:55.844 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 01:11:55.848 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:11:55.848 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:11:55.848 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:11:55.848 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:11:55.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:11:55.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:11:55.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:11:55.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:11:55.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:11:55.849 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:11:55.850 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:11:55.850 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 01:11:55.850 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:11:55.850 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:11:55.851 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:11:55.851 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:11:55.851 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:11:55.851 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:11:55.851 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:11:55.851 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:11:55.851 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:11:55.852 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:11:55.852 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:11:55.852 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 01:19:14.687 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 01:19:14.692 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:19:14.692 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:19:14.693 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:19:14.693 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:19:14.693 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:19:14.693 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:19:14.693 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:19:14.694 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:19:14.694 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:19:14.694 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:19:14.694 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:19:14.695 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 01:19:14.695 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:19:14.695 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:19:14.695 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:19:14.695 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:19:14.696 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:19:14.696 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:19:14.696 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:19:14.696 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:19:14.696 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:19:14.696 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:19:14.696 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:19:14.697 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 01:22:42.084 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 01:22:42.089 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:22:42.089 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:22:42.089 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:22:42.090 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:22:42.090 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:22:42.090 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:22:42.090 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:22:42.090 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:22:42.090 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:22:42.091 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:22:42.091 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:22:42.091 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 01:22:42.092 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:22:42.092 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:22:42.092 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:22:42.092 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:22:42.093 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:22:42.093 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:22:42.093 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:22:42.093 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:22:42.093 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:22:42.093 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:22:42.094 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:22:42.094 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 01:24:03.250 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 01:24:03.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:24:03.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:24:03.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:24:03.255 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:24:03.255 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:24:03.255 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:24:03.255 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:24:03.256 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:24:03.256 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:24:03.256 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:24:03.256 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:24:03.257 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 01:24:03.257 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:24:03.257 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:24:03.257 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:24:03.258 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:24:03.258 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:24:03.258 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:24:03.258 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:24:03.258 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:24:03.259 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:24:03.259 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:24:03.260 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:24:03.261 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 01:25:48.897 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 01:25:48.902 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:25:48.902 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:25:48.902 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:25:48.903 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:25:48.903 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:25:48.903 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:25:48.903 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:25:48.904 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:25:48.904 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:25:48.904 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:25:48.904 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:25:48.905 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 01:25:48.905 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:25:48.906 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:25:48.906 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:25:48.906 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:25:48.906 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:25:48.906 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:25:48.906 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:25:48.907 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:25:48.907 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:25:48.907 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:25:48.907 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:25:48.908 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 01:27:15.246 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 01:27:15.250 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:27:15.251 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:27:15.251 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:27:15.251 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:27:15.251 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:27:15.252 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:27:15.252 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:27:15.252 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:27:15.252 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:27:15.252 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:27:15.252 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:27:15.253 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 01:27:15.253 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:27:15.253 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:27:15.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:27:15.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:27:15.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:27:15.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:27:15.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:27:15.254 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:27:15.255 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:27:15.255 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:27:15.255 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:27:15.256 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
+[DEBUG] 2025-05-01 01:32:44.402 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/entity/User.java
+[DEBUG] 2025-05-01 01:32:44.407 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:32:44.407 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:32:44.407 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:32:44.407 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:32:44.408 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:32:44.408 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:32:44.408 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:32:44.408 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:32:44.408 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:32:44.409 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:32:44.409 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:32:44.409 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserRequest.java
+[DEBUG] 2025-05-01 01:32:44.410 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: id, Type: BIGINT, Comment: 사용자 ID
+[DEBUG] 2025-05-01 01:32:44.410 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: username, Type: VARCHAR, Comment: 로그인 ID
+[DEBUG] 2025-05-01 01:32:44.410 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: password, Type: VARCHAR, Comment: 비밀번호 (암호화)
+[DEBUG] 2025-05-01 01:32:44.410 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: name, Type: VARCHAR, Comment: 사용자 이름
+[DEBUG] 2025-05-01 01:32:44.410 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: email, Type: VARCHAR, Comment: 이메일
+[DEBUG] 2025-05-01 01:32:44.410 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: phone, Type: VARCHAR, Comment: 전화번호
+[DEBUG] 2025-05-01 01:32:44.411 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: use_yn, Type: BIT, Comment: 
+[DEBUG] 2025-05-01 01:32:44.411 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_by, Type: BIGINT, Comment: 생성자 사용자 ID
+[DEBUG] 2025-05-01 01:32:44.411 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_by, Type: BIGINT, Comment: 수정자 사용자 ID
+[DEBUG] 2025-05-01 01:32:44.411 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: created_at, Type: DATETIME, Comment: 생성 일시
+[DEBUG] 2025-05-01 01:32:44.412 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Column: updated_at, Type: DATETIME, Comment: 수정 일시
+[DEBUG] 2025-05-01 01:32:44.412 [main][MysqlCodeGenerator.java] MysqlCodeGenerator - Generated: generated/dto/UserResponse.java
