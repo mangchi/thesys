@@ -1,30 +1,50 @@
 package com.thesys.titan.sample.service;
 
-import com.thesys.titan.sample.dto.SampleDto;
+import com.thesys.titan.sample.dto.SampleRequest;
+import com.thesys.titan.sample.dto.SampleResponse;
+import com.thesys.titan.sample.entity.Sample;
+import com.thesys.titan.sample.repository.SampleRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
-import com.thesys.titan.exception.BizException;
 
-public interface SampleService {
+@Service
+@RequiredArgsConstructor
+public class SampleService {
 
-     List<SampleDto> getSampleList() throws BizException;
+     private final SampleRepository sampleRepository;
 
-     List<SampleDto> getSampleListWhere(Map<String, Object> params) throws BizException;
+     @Transactional
+     public SampleResponse create(SampleRequest request) {
+          Sample entity = Sample.of(request);
+          return SampleResponse.from(sampleRepository.save(entity));
+     }
 
-     SampleDto getSample(Map<String, Object> params) throws BizException;
+     @Transactional
+     public SampleResponse update(Long id, SampleRequest request) {
+          Sample entity = sampleRepository.findById(id).orElseThrow();
+          entity.update(request);
+          return SampleResponse.from(entity);
+     }
 
-     Map<String, Object> getSampleMap(Map<String, Object> params) throws BizException;
+     @Transactional
+     public void delete(Long id) {
+          Sample entity = sampleRepository.findById(id).orElseThrow();
+          sampleRepository.delete(entity);
+     }
 
-     int createSample(SampleDto dto) throws BizException;
+     @Transactional(readOnly = true)
+     public List<SampleResponse> getAll() {
+          return sampleRepository.findAll().stream()
+                    .map(SampleResponse::from)
+                    .toList();
+     }
 
-     int createSampleMap(Map<String, Object> params) throws BizException;
-
-     int createSampleMaps(List<Map<String, Object>> params) throws BizException;
-
-     int createSamples(List<SampleDto> list) throws BizException;
-
-     int updateSample(SampleDto dto) throws BizException;
-
-     int deleteSample(SampleDto dto) throws BizException;
+     @Transactional(readOnly = true)
+     public SampleResponse getOne(Long id) {
+          return sampleRepository.findById(id).map(SampleResponse::from)
+                    .orElseThrow();
+     }
 }

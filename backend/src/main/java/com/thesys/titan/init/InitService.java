@@ -15,7 +15,5 @@ public class InitService implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         log.debug("Application started successfully.");
-
     }
-
 }

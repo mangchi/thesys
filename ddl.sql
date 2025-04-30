@@ -1,48 +1,36 @@
 -- This SQL script creates tables in a MySQL database.
-
 -- user_roles 테이블에서 users 참조를 삭제 (외래키 제약조건 제거)
 ALTER TABLE user_role DROP FOREIGN KEY fk_user_role_user;
-
 -- user_roles 테이블에서 roles 참조를 삭제 (외래키 제약조건 제거)
 ALTER TABLE user_role DROP FOREIGN KEY fk_user_role_role;
-
 -- role_permissions 테이블에서 roles 참조를 삭제 (외래키 제약조건 제거)
 ALTER TABLE role_permission DROP FOREIGN KEY fk_role_permission_role;
-
 -- user_rolrole_permissionses 테이블에서 permissionses 참조를 삭제 (외래키 제약조건 제거)
 ALTER TABLE role_permission DROP FOREIGN KEY fk_role_permission_permission;
-
 -- users 테이블 삭제
-DROP TABLE IF EXISTS user ;
-
+DROP TABLE IF EXISTS user;
 -- roles 테이블 삭제
-DROP TABLE IF EXISTS role ;
-
+DROP TABLE IF EXISTS role;
 -- user_roles 테이블 삭제
-DROP TABLE IF EXISTS user_role ;
-
+DROP TABLE IF EXISTS user_role;
 -- permissions 테이블 삭제
-DROP TABLE IF EXISTS permissions ;
-
+DROP TABLE IF EXISTS permissions;
 -- role_permissions 테이블 삭제
-DROP TABLE IF EXISTS role_permission ;
-
+DROP TABLE IF EXISTS role_permission;
 -- 사용자 테이블
 CREATE TABLE user (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '사용자 ID',
-    username VARCHAR(100) NOT NULL UNIQUE COMMENT '사용자명',
+    username VARCHAR(100) NOT NULL UNIQUE COMMENT '로그인 ID',
     password VARCHAR(255) NOT NULL COMMENT '비밀번호 (암호화)',
-    name VARCHAR(100) COMMENT '실명',
+    name VARCHAR(100) COMMENT '사용자 이름',
     email VARCHAR(255) UNIQUE COMMENT '이메일',
     phone VARCHAR(20) COMMENT '전화번호',
-    is_active BOOLEAN DEFAULT TRUE COMMENT '활성 사용자 여부',
+    use_yn TINYINT(1) DEFAULT 1 COMMENT '사용 여부 (1: 사용, 0: 미사용)',
     created_by BIGINT COMMENT '생성자 사용자 ID',
     updated_by BIGINT COMMENT '수정자 사용자 ID',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정 일시'
-) COMMENT='사용자 테이블';
-
-
+) COMMENT = '사용자 테이블';
 -- 역활 테이블
 CREATE TABLE role (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '역할 ID',
@@ -50,23 +38,15 @@ CREATE TABLE role (
     description VARCHAR(255) COMMENT '역할 설명',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정 일시'
-) COMMENT='역할(Role) 테이블';
-
-
+) COMMENT = '역할(Role) 테이블';
 -- 사용자-역할 매핑 테이블
 CREATE TABLE IF NOT EXISTS user_role (
     user_id BIGINT NOT NULL COMMENT '사용자 ID',
     role_id BIGINT NOT NULL COMMENT '역할 ID',
     PRIMARY KEY (user_id, role_id),
-    CONSTRAINT fk_user_role_user FOREIGN KEY (user_id)
-        REFERENCES user(id)
-        ON DELETE CASCADE ON UPDATE CASCADE ,
-    CONSTRAINT fk_user_role_role FOREIGN KEY (role_id)
-        REFERENCES role(id)
-        ON DELETE CASCADE ON UPDATE CASCADE 
-) ENGINE=InnoDB COMMENT='사용자와 역할 간의 매핑 테이블';
-
-
+    CONSTRAINT fk_user_role_user FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_user_role_role FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB COMMENT = '사용자와 역할 간의 매핑 테이블';
 -- 권한 테이블
 CREATE TABLE permission (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '권한 ID',
@@ -74,31 +54,21 @@ CREATE TABLE permission (
     description VARCHAR(255) COMMENT '권한 설명',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정 일시'
-) COMMENT='세부 권한 목록 테이블';
-
-
-
+) COMMENT = '세부 권한 목록 테이블';
 -- 역할-권한 매핑 테이블
-
 CREATE TABLE role_permission (
     role_id BIGINT NOT NULL COMMENT '역할 ID',
     permission_id BIGINT NOT NULL COMMENT '권한 ID',
     PRIMARY KEY (role_id, permission_id),
-    CONSTRAINT fk_role_permission_role FOREIGN KEY (role_id) 
-        REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE ,
-    CONSTRAINT fk_role_permission_permission FOREIGN KEY (permission_id) 
-        REFERENCES permission(id) ON DELETE CASCADE ON UPDATE CASCADE 
-) COMMENT='역할과 권한 간의 매핑 테이블';
-
-
+    CONSTRAINT fk_role_permission_role FOREIGN KEY (role_id) REFERENCES role(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_role_permission_permission FOREIGN KEY (permission_id) REFERENCES permission(id) ON DELETE CASCADE ON UPDATE CASCADE
+) COMMENT = '역할과 권한 간의 매핑 테이블';
 -- -- 다국어 지원을 위한 언어 테이블
 CREATE TABLE languages (
     code VARCHAR(10) PRIMARY KEY COMMENT '언어 코드 (예: en, ko, jp)',
     name VARCHAR(100) NOT NULL COMMENT '언어명',
     is_default BOOLEAN DEFAULT FALSE COMMENT '기본 언어 여부'
-) COMMENT='지원 언어 목록 테이블';
-
-
+) COMMENT = '지원 언어 목록 테이블';
 -- 다국어 문자열 테이블
 CREATE TABLE i18n_messages (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -108,18 +78,13 @@ CREATE TABLE i18n_messages (
     UNIQUE (message_key, lang_code),
     FOREIGN KEY (lang_code) REFERENCES languages(code)
 );
-
 -- Code 테이블에서 CodeGroup 참조를 삭제 (외래키 제약조건 제거)
 ALTER TABLE code DROP FOREIGN KEY fk_code_group_id;
-
 -- Code 테이블 삭제
-DROP TABLE IF EXISTS code ;
-
+DROP TABLE IF EXISTS code;
 -- CodeGroup 테이블 삭제
-DROP TABLE IF EXISTS code_group ;
-
+DROP TABLE IF EXISTS code_group;
 -- 코드 그룹 테이블
-
 CREATE TABLE IF NOT EXISTS code_group (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '고유 ID, 각 코드 그룹을 식별하는 기본키',
     group_code VARCHAR(10) NOT NULL UNIQUE COMMENT '그룹 코드, 고유한 코드 그룹 식별자 (예: USER_TYPE)',
@@ -131,9 +96,7 @@ CREATE TABLE IF NOT EXISTS code_group (
     created_by VARCHAR(50) NOT NULL COMMENT '생성자, 코드 그룹을 만든 사용자 또는 시스템',
     updated_by VARCHAR(50) COMMENT '수정자, 코드 그룹을 마지막으로 수정한 사용자 또는 시스템'
 ) COMMENT '코드 그룹 테이블, 다양한 코드 항목을 그룹화하여 관리';
-
 -- 코드 테이블
-
 CREATE TABLE IF NOT EXISTS code (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '고유 ID, 각 코드 항목을 식별하는 기본키',
     group_id BIGINT NOT NULL COMMENT '코드 그룹 ID, 해당 코드가 속한 그룹의 ID (code_group 테이블의 id)',
@@ -147,11 +110,8 @@ CREATE TABLE IF NOT EXISTS code (
     updated_at DATETIME COMMENT '수정 일시, 코드 항목이 마지막으로 수정된 날짜와 시간',
     created_by VARCHAR(50) NOT NULL COMMENT '생성자, 코드 항목을 만든 사용자 또는 시스템',
     updated_by VARCHAR(50) COMMENT '수정자, 코드 항목을 마지막으로 수정한 사용자 또는 시스템',
-    CONSTRAINT fk_code_group_id FOREIGN KEY (group_id) 
-        REFERENCES code_group(id) ON DELETE CASCADE ON UPDATE CASCADE 
+    CONSTRAINT fk_code_group_id FOREIGN KEY (group_id) REFERENCES code_group(id) ON DELETE CASCADE ON UPDATE CASCADE
 ) COMMENT '코드 테이블';
-
-
 -- 게시판 테이블
 CREATE TABLE boards (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '게시판 ID',
@@ -163,9 +123,7 @@ CREATE TABLE boards (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정 일시',
     FOREIGN KEY (created_by) REFERENCES users(id),
     FOREIGN KEY (updated_by) REFERENCES users(id)
-) COMMENT='게시판 메타 정보 테이블';
-
-
+) COMMENT = '게시판 메타 정보 테이블';
 -- 게시글 테이블
 CREATE TABLE posts (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '게시글 ID',
@@ -182,9 +140,7 @@ CREATE TABLE posts (
     FOREIGN KEY (created_by) REFERENCES users(id),
     FOREIGN KEY (updated_by) REFERENCES users(id),
     FOREIGN KEY (lang_code) REFERENCES languages(code)
-) COMMENT='게시판 게시글 테이블';
-
-
+) COMMENT = '게시판 게시글 테이블';
 -- 댓글 테이블
 CREATE TABLE comments (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
@@ -195,8 +151,6 @@ CREATE TABLE comments (
     FOREIGN KEY (post_id) REFERENCES posts(id),
     FOREIGN KEY (author_id) REFERENCES users(id)
 );
-
-
 CREATE TABLE cms_categories (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '카테고리 ID',
     name VARCHAR(100) NOT NULL COMMENT '카테고리 이름',
@@ -207,9 +161,7 @@ CREATE TABLE cms_categories (
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정 일시',
     FOREIGN KEY (created_by) REFERENCES users(id),
     FOREIGN KEY (updated_by) REFERENCES users(id)
-) COMMENT='CMS 콘텐츠 카테고리 테이블';
-
-
+) COMMENT = 'CMS 콘텐츠 카테고리 테이블';
 CREATE TABLE cms_contents (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '콘텐츠 ID',
     category_id BIGINT COMMENT '카테고리 ID',
@@ -226,11 +178,7 @@ CREATE TABLE cms_contents (
     FOREIGN KEY (created_by) REFERENCES users(id),
     FOREIGN KEY (updated_by) REFERENCES users(id),
     FOREIGN KEY (lang_code) REFERENCES languages(code)
-) COMMENT='CMS 콘텐츠 테이블';
-
-
-
-
+) COMMENT = 'CMS 콘텐츠 테이블';
 CREATE TABLE cms_banners (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '배너 ID',
     title VARCHAR(255) COMMENT '배너 제목',
@@ -246,9 +194,7 @@ CREATE TABLE cms_banners (
     FOREIGN KEY (created_by) REFERENCES users(id),
     FOREIGN KEY (updated_by) REFERENCES users(id),
     FOREIGN KEY (lang_code) REFERENCES languages(code)
-) COMMENT='CMS 배너 테이블';
-
-
+) COMMENT = 'CMS 배너 테이블';
 CREATE TABLE cms_pages (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '페이지 ID',
     title VARCHAR(255) NOT NULL COMMENT '페이지 제목',
@@ -263,15 +209,8 @@ CREATE TABLE cms_pages (
     FOREIGN KEY (created_by) REFERENCES users(id),
     FOREIGN KEY (updated_by) REFERENCES users(id),
     FOREIGN KEY (lang_code) REFERENCES languages(code)
-) COMMENT='CMS 페이지 테이블';
-
-
-
-
-
-
+) COMMENT = 'CMS 페이지 테이블';
 -------------   사용자 -------------------
-
 CREATE TABLE IF NOT EXISTS member (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '회원 고유 ID',
     username VARCHAR(100) NOT NULL UNIQUE COMMENT '회원 계정 (로그인 ID)',
@@ -291,7 +230,6 @@ CREATE TABLE IF NOT EXISTS member (
     created_by VARCHAR(50) COMMENT '생성자',
     updated_by VARCHAR(50) COMMENT '수정자'
 ) COMMENT '회원 테이블';
-
 CREATE TABLE IF NOT EXISTS member_login_history (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '로그인 이력 ID',
     member_id BIGINT NOT NULL COMMENT '회원 ID',
@@ -300,11 +238,8 @@ CREATE TABLE IF NOT EXISTS member_login_history (
     user_agent TEXT COMMENT 'User-Agent 정보',
     login_result VARCHAR(20) COMMENT '로그인 결과 (SUCCESS, FAIL 등)',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '생성일시',
-    CONSTRAINT fk_member_login_history_member_id FOREIGN KEY (member_id)
-        REFERENCES member(id)
-        ON DELETE CASCADE
+    CONSTRAINT fk_member_login_history_member_id FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 ) COMMENT '회원 로그인 이력 테이블';
-
 CREATE TABLE IF NOT EXISTS member_address (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '주소 ID',
     member_id BIGINT NOT NULL COMMENT '회원 ID',
@@ -318,11 +253,8 @@ CREATE TABLE IF NOT EXISTS member_address (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
     created_by VARCHAR(50) COMMENT '생성자',
     updated_by VARCHAR(50) COMMENT '수정자',
-    CONSTRAINT fk_member_address_member_id FOREIGN KEY (member_id)
-        REFERENCES member(id)
-        ON DELETE CASCADE
+    CONSTRAINT fk_member_address_member_id FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 ) COMMENT '회원 주소 정보 테이블';
-
 CREATE TABLE IF NOT EXISTS member_point (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '포인트 내역 ID',
     member_id BIGINT NOT NULL COMMENT '회원 ID',
@@ -331,11 +263,8 @@ CREATE TABLE IF NOT EXISTS member_point (
     point_type VARCHAR(20) DEFAULT 'SAVE' COMMENT '포인트 타입 (SAVE, USE)',
     occurred_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '발생 일시',
     created_by VARCHAR(50) COMMENT '생성자',
-    CONSTRAINT fk_member_point_member_id FOREIGN KEY (member_id)
-        REFERENCES member(id)
-        ON DELETE CASCADE
+    CONSTRAINT fk_member_point_member_id FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 ) COMMENT '회원 포인트 내역 테이블';
-
 CREATE TABLE IF NOT EXISTS member_terms_agreement (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '약관 동의 이력 ID',
     member_id BIGINT NOT NULL COMMENT '회원 ID',
@@ -343,11 +272,8 @@ CREATE TABLE IF NOT EXISTS member_terms_agreement (
     agreed BOOLEAN DEFAULT FALSE COMMENT '동의 여부',
     agreed_at DATETIME COMMENT '동의 일시',
     version VARCHAR(20) COMMENT '약관 버전',
-    CONSTRAINT fk_member_terms_agreement_member_id FOREIGN KEY (member_id)
-        REFERENCES member(id)
-        ON DELETE CASCADE
+    CONSTRAINT fk_member_terms_agreement_member_id FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 ) COMMENT '회원 약관 동의 이력 테이블';
-
 CREATE TABLE IF NOT EXISTS member_activity_log (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '회원 활동 로그 ID',
     member_id BIGINT NOT NULL COMMENT '회원 ID',
@@ -357,11 +283,8 @@ CREATE TABLE IF NOT EXISTS member_activity_log (
     ip_address VARCHAR(45) COMMENT 'IP 주소',
     user_agent TEXT COMMENT 'User-Agent 정보',
     created_by VARCHAR(50) COMMENT '생성자',
-    CONSTRAINT fk_member_activity_log_member_id FOREIGN KEY (member_id)
-        REFERENCES member(id)
-        ON DELETE CASCADE
+    CONSTRAINT fk_member_activity_log_member_id FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 ) COMMENT '회원 활동 로그 테이블';
-
 CREATE TABLE IF NOT EXISTS member_grade_history (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '등급 이력 ID',
     member_id BIGINT NOT NULL COMMENT '회원 ID',
@@ -370,19 +293,8 @@ CREATE TABLE IF NOT EXISTS member_grade_history (
     changed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '변경 일시',
     changed_by VARCHAR(50) COMMENT '변경자 (관리자 ID 등)',
     reason VARCHAR(255) COMMENT '변경 사유',
-    CONSTRAINT fk_member_grade_history_member_id FOREIGN KEY (member_id)
-        REFERENCES member(id)
-        ON DELETE CASCADE
+    CONSTRAINT fk_member_grade_history_member_id FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 ) COMMENT '회원 등급 변경 이력 테이블';
-
-
-
-
-
-
-
-
-
 -- 권한회원 소셜 로그인 연동 테이블
 CREATE TABLE IF NOT EXISTS member_social_account (
     id BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '소셜 계정 ID',
@@ -395,8 +307,17 @@ CREATE TABLE IF NOT EXISTS member_social_account (
     updated_by VARCHAR(50) COMMENT '수정자',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '생성일시',
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
-    CONSTRAINT fk_member_social_account_member_id FOREIGN KEY (member_id)
-        REFERENCES member(id)
-        ON DELETE CASCADE,
+    CONSTRAINT fk_member_social_account_member_id FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE,
     UNIQUE KEY uk_member_provider (member_id, provider)
 ) COMMENT '회원 소셜 로그인 연동 테이블';
+-- Sample 테이블
+CREATE TABLE sample (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT '샘플 ID',
+    description VARCHAR(200) NOT NULL UNIQUE COMMENT '샘플 설명',
+    contents TEXT NOT NULL COMMENT '샘플 내용',
+    use_yn TINYINT(1) DEFAULT 1 COMMENT '사용 여부 (1: 사용, 0: 미사용)',
+    created_by BIGINT UNSIGNED COMMENT '생성자 사용자 ID',
+    updated_by BIGINT UNSIGNED COMMENT '수정자 사용자 ID',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '생성 일시',
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정 일시'
+) COMMENT = '샘플 테이블';

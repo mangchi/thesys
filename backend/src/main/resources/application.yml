@@ -34,18 +34,33 @@ spring:
 ---
 cloud:
   aws:
-#    s3:
-#      bucket: hr-portal-backend
+    #    s3:
+    #      bucket: hr-portal-backend
     region:
       static: ap-southeast-2
 logging:
   config: classpath:log4j2.yml
 mybatis:
   configuration:
-    jdbc-type-for-null: 'NULL'
+    jdbc-type-for-null: "NULL"
     map-underscore-to-camel-case: true
   mapper-locations: /mapper/**/*.xml
   type-aliases-package: com.thesys.titan.common.vo,com.thesys.titan.**.vo
+jpa:
+  hibernate:
+    ddl-auto: update # (create, create-drop, update, validate, none)
+  show-sql: true
+  properties:
+    hibernate:
+      format_sql: true
+      dialect: org.hibernate.dialect.MySQL8Dialect
+  open-in-view: false
+# JPA 엔티티 감사(Auditing) 기능을 위한 설정 (필요 시)
+data:
+  jpa:
+    repositories:
+      enabled: true
+
 ---
 ##### local #####
 spring:
@@ -189,7 +204,7 @@ springdoc:
     groups:
       enabled: true
     path: /api-docs
-    version: OPENAPI_3_0
+    version: OPENAPI_3_1
   default-consumes-media-type: application/json
   default-produces-media-type: application/json
   paths-to-match: /api/**

@@ -1,9 +1,9 @@
 package com.thesys.titan.user.service;
 
-import com.thesys.titan.user.dto.UserDto; // Import the UserDto class
+// import com.thesys.titan.user.dto.UserRequest; // Import the UserDto class
 
 public interface UserService {
 
-    int createUser(UserDto userDto); // Example method for creating a user
+    // int createUser(UserRequest userDto); // Example method for creating a user
 
 }
