@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -19,18 +19,11 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { useAuthStore } from '../stores/auth';
-import {
-  Avatar,
-  Button,
-  ClickAwayListener,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  SxProps,
-} from '@mui/material';
+import { Avatar, Button, ClickAwayListener, SxProps } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { blue } from '@mui/material/colors';
+import ThemeToggleButton from './ThemeToggleButton';
+import { ColorModeContext } from '../theme/ThemeContext';
 
 const drawerWidth = 240;
 
@@ -101,16 +94,23 @@ export default function Sidebar() {
   const user = useAuthStore((state) => state.user);
   const [dialogOpen, setDialogOpen] = useState(false);
 
+  const { mode } = useContext(ColorModeContext);
+
   const styles: SxProps = {
-    position: 'absolute',
+    position: 'fixed',
     top: 60,
-    right: 0,
-    left: 0,
-    zIndex: 1,
-    minWidth: '200px',
-    border: '1px solid',
-    borderRadius: '8px',
-    p: 2,
+    right: '15%',
+    left: '94%',
+    // position: 'absolute',
+    // top: 60,
+    // right: '10%',
+    // left: 0,
+    zIndex: 10,
+    width: '160px',
+    border: '1px solid #ccc',
+    borderRadius: '10px',
+    // p: 2,
+    padding: '5px',
     bgcolor: 'background.paper',
   };
 
@@ -192,8 +192,8 @@ export default function Sidebar() {
                 // variant="body1"
                 onClick={handleDialogOpen}
               >
-                <Avatar sx={{ bgcolor: blue[700] }}>
-                  <AccountCircleIcon />
+                <Avatar sx={{ bgcolor: mode === 'light' ? blue[700] : '#1d1d1d' }}>
+                  <AccountCircleIcon sx={{ color: mode === 'light' ? 'white' : 'white' }} />
                 </Avatar>
                 <Typography sx={{ color: 'white' }}>{user?.name || 'Guest'}</Typography>
                 {/* 👤 {user?.name || '게스트'} */}
@@ -204,17 +204,27 @@ export default function Sidebar() {
                     <List>
                       <ListItem disablePadding>
                         <ListItemButton onClick={handleProfileChange}>
-                          <ListItemText sx={{ bgcolor: blue[700] }} primary="개인정보 변경" />
+                          <ListItemText
+                            sx={{ color: mode === 'light' ? blue[700] : 'white' }}
+                            primary="개인정보 변경"
+                          />
                         </ListItemButton>
                       </ListItem>
                       <ListItem disablePadding>
                         <ListItemButton onClick={handleLogout}>
-                          <ListItemText sx={{ bgcolor: blue[700] }} primary="로그아웃" />
+                          <ListItemText
+                            sx={{ color: mode === 'light' ? blue[700] : 'white' }}
+                            primary="로그아웃"
+                          />
                         </ListItemButton>
                       </ListItem>
                     </List>
 
-                    <Button onClick={handleDialogClose} color="primary">
+                    <Button
+                      sx={{ color: mode === 'light' ? blue[700] : 'white' }}
+                      onClick={handleDialogClose}
+                      color="primary"
+                    >
                       닫기
                     </Button>
                   </Box>
@@ -222,6 +232,8 @@ export default function Sidebar() {
               ) : null}
             </Box>
           </ClickAwayListener>
+          <ThemeToggleButton />
+
           {/* <Dialog open={dialogOpen} onClose={handleDialogClose}>
             <DialogTitle>사용자 메뉴</DialogTitle>
             <DialogContent>
@@ -279,7 +291,8 @@ export default function Sidebar() {
         <List>
           {[
             { text: 'Dashboard', to: '/dashboard' },
-            { text: 'User', to: '/User' },
+            { text: 'User', to: '/user' },
+            { text: 'Sample', to: '/sample' },
             // { text: 'Settings', to: '/settings' },
           ].map(({ text, to }, index) => (
             <ListItem key={text} disablePadding>

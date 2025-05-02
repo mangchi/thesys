@@ -21,10 +21,14 @@ export default function Signup() {
         </Typography> */}
 
         <Stack spacing={2}>
-          <TextField label="이름" variant="outlined" fullWidth />
-          <TextField label="이메일" variant="outlined" fullWidth />
-          <TextField label="비밀번호" type="password" variant="outlined" fullWidth />
-          <TextField label="비밀번호 확인" type="password" variant="outlined" fullWidth />
+          <TextField required label="아이디" variant="outlined" fullWidth />
+          <TextField required label="비밀번호" type="password" variant="outlined" fullWidth />
+          <TextField required label="비밀번호 확인" type="password" variant="outlined" fullWidth />
+          <TextField required label="이름" variant="outlined" fullWidth />
+          <TextField required label="닉네임" variant="outlined" fullWidth />
+          <TextField required label="이메일" variant="outlined" fullWidth />
+          <TextField required label="휴대폰 번호" variant="outlined" fullWidth />
+
           <Button variant="contained" fullWidth>
             회원가입
           </Button>

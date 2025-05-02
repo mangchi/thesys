@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Box, Typography, TextField, Button, Stack } from '@mui/material';
+import { Box, TextField, Button, Stack } from '@mui/material';
 import { ColDef } from 'ag-grid-community';
 import { Grid } from '../components/Grid';
 import { PageContainer } from '../components/PageContainer';
@@ -53,7 +53,7 @@ export default function UserSearchPage() {
       </Typography> */}
 
       {/* 검색 폼 */}
-      <Box component="form" onSubmit={handleSearch} sx={{ mb: 2 }}>
+      <Box component="form" onSubmit={handleSearch} sx={{ mb: 2, width: '100%' }}>
         <Stack direction="row" spacing={2}>
           <TextField
             label="검색어 (이름, 이메일, 국가)"
@@ -69,7 +69,7 @@ export default function UserSearchPage() {
         </Stack>
       </Box>
 
-      <Grid columnDefs={columnDefs} rowData={filtered} height={500} />
+      <Grid className="w-[100%]" columnDefs={columnDefs} rowData={filtered} />
     </PageContainer>
   );
 }
