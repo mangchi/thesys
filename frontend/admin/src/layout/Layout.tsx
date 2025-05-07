@@ -7,7 +7,7 @@ const Layout = () => {
       {/* <div className="relative flex h-screen"> */}
       {/* <div style={{ display: 'flex' }}> */}
       <Sidebar />
-      <div className="relative h-screen w-full">
+      <div className="relative h-full w-full">
         <main
           className="  pt-20 "
           // style={{ flexGrow: 1, padding: '24px' }}
