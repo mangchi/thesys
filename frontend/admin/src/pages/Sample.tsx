@@ -240,7 +240,7 @@ const Sample = () => {
               options={genderOptions}
               value={selectedGenders}
               onChange={(value) => setSelectedGenders((value as Gender[]) || [])}
-              // errorMessage={selectedFruits.length === 0 ? '하나 이상 선택해주세요.' : undefined}
+            // errorMessage={selectedFruits.length === 0 ? '하나 이상 선택해주세요.' : undefined}
             />
             <p className="mx-4"></p>
             <MultiSelect
@@ -281,12 +281,12 @@ const Sample = () => {
         <CommonText variantType="subtitle" sx={{ display: 'flex' }}>
           Chart
         </CommonText>
-        <Card variant="outlined" sx={{ marginBottom: 2, display: 'flex', width: '100%' }}>
+        {/* <Card variant="outlined" sx={{ marginBottom: 2, display: 'flex', width: '100%' }}>
           <Chart sx={{}} type="line" data={data} title="월별 매출" />
           <Chart type="bar" data={data} title="월별 방문자" />
           <Chart type="pie" data={data} title="비율 분석" />
           <Chart type="scatter" data={data} title="분산 분석" />
-        </Card>
+        </Card> */}
       </section>
     </PageContainer>
   );
