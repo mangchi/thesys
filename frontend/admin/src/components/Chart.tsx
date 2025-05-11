@@ -39,14 +39,6 @@ const Chart = ({ type, data, title, width, height, children, sx, ...rest }: Char
 
   const renderChart = () => {
     switch (type) {
-      case 'line':
-        return (
-          <LineChart
-            width={width}
-            height={height}
-            series={[{ type: 'line', data, xField: 'x', yField: 'y' }]}
-          />
-        );
 
       case 'bar':
         return (
@@ -54,6 +46,15 @@ const Chart = ({ type, data, title, width, height, children, sx, ...rest }: Char
             width={width}
             height={height}
             series={[{ type: 'bar', data, xField: 'x', yField: 'y' }]}
+          />
+        );
+
+      case 'line':
+        return (
+          <LineChart
+            width={width}
+            height={height}
+            series={[{ type: 'line', data, xField: 'x', yField: 'y' }]}
           />
         );
 

@@ -4,14 +4,10 @@ import Sidebar from '../components/Sidebar';
 const Layout = () => {
   return (
     <div className="flex">
-      {/* <div className="relative flex h-screen"> */}
-      {/* <div style={{ display: 'flex' }}> */}
       <Sidebar />
       <div className="relative h-full w-full">
         <main
-          className="  pt-20 "
-          // style={{ flexGrow: 1, padding: '24px' }}
-          // style={{ flexGrow: 1, padding: '24px', marginLeft: 240 }}
+          className="pt-20 "
         >
           <Outlet />
         </main>
