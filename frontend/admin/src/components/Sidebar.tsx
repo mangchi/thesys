@@ -97,10 +97,10 @@ export default function Sidebar() {
   const { mode } = useContext(ColorModeContext);
 
   const styles: SxProps = {
-    position: 'fixed',
+    position: 'absolute',
     top: 60,
-    right: '15%',
-    left: '94%',
+    // right: 100,
+    left: 0.5,
     // position: 'absolute',
     // top: 60,
     // right: '10%',
@@ -110,7 +110,7 @@ export default function Sidebar() {
     border: '1px solid #ccc',
     borderRadius: '10px',
     // p: 2,
-    padding: '5px',
+    padding: '10px',
     bgcolor: 'background.paper',
   };
 

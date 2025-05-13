@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import { Box, Card, CardContent, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Card, CardContent, Paper, Tab, Tabs, Typography } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PeopleIcon from '@mui/icons-material/People';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -8,9 +8,9 @@ import { PageContainer } from '../components/PageContainer';
 import { CommonText } from '../components/CommonText';
 import { BarChart, LineChart, PieChart } from '@mui/x-charts';
 import { useState } from 'react';
+import { GenericTabs } from '../components/GenericTabs';
 
 const Dashboard = () => {
-  const [tabValue, setTabValue] = useState('1');
   const stats = [
     {
       title: '총 사용자 수',
@@ -142,19 +142,16 @@ const Dashboard = () => {
   const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
   const xLabels = ['Page A', 'Page B', 'Page C', 'Page D', 'Page E', 'Page F', 'Page G'];
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
-    setTabValue(newValue);
-  };
+  // Tab Change Handler
+  // const handleTabChange = (event: React.SyntheticEvent, newValue: string) => {
+  //   setTabValue(newValue);
+  // };
 
   return (
     <PageContainer>
       <Box sx={{ width: '100%' }}>
         <CommonText variantType="title"> Dashboard</CommonText>
-        <Tabs value={tabValue} onChange={handleTabChange}>
-          <Tab value="1" label="Dashboard1" />
-          <Tab value="2" label="DashBoard2" />
-          <Tab value="3" label="DashBoard3" />
-        </Tabs>
+
         <p className="my-4" />
         {/* <Typography variant="h5" mb={3}>
         Dashboard

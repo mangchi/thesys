@@ -8,6 +8,7 @@ import Popup from '../components/Popup';
 import Chart, { ChartData } from '../components/Chart';
 import GenericSelect, { GenericSelectOption } from '../components/GenericSelect';
 import MultiSelect, { MultiSelectOption } from '../components/MultiSelect';
+import { GenericTabs } from '../components/GenericTabs';
 
 const Sample = () => {
   interface User {
@@ -134,6 +135,33 @@ const Sample = () => {
     // 이곳에 실제 제출 로직을 넣으면 됩니다.
   };
 
+  const tabList = [
+    {
+      label: '홈',
+      content: (
+        <Typography>
+          여기는 <strong>홈</strong> 화면입니다.
+        </Typography>
+      ),
+    },
+    {
+      label: '프로필',
+      content: (
+        <Typography>
+          여기는 <strong>프로필</strong> 화면입니다.
+        </Typography>
+      ),
+    },
+    {
+      label: '설정',
+      content: (
+        <Typography>
+          여기는 <strong>설정</strong> 화면입니다.
+        </Typography>
+      ),
+    },
+  ];
+
   return (
     <PageContainer>
       <CommonText variantType="title"> Sample</CommonText>
@@ -240,7 +268,7 @@ const Sample = () => {
               options={genderOptions}
               value={selectedGenders}
               onChange={(value) => setSelectedGenders((value as Gender[]) || [])}
-            // errorMessage={selectedFruits.length === 0 ? '하나 이상 선택해주세요.' : undefined}
+              // errorMessage={selectedFruits.length === 0 ? '하나 이상 선택해주세요.' : undefined}
             />
             <p className="mx-4"></p>
             <MultiSelect
@@ -286,6 +314,13 @@ const Sample = () => {
           <Chart type="line" data={data} title="월별 매출" />
           <Chart type="pie" data={data} title="비율 분석" />
           <Chart type="scatter" data={data} title="분산 분석" />
+        </Card>
+        {/* Tabs */}
+        <CommonText variantType="subtitle" sx={{ display: 'flex' }}>
+          Tabs
+        </CommonText>
+        <Card variant="outlined" sx={{ marginBottom: 2, display: 'flex', width: '100%' }}>
+          <GenericTabs tabs={tabList} variant="fullWidth" />
         </Card>
       </section>
     </PageContainer>

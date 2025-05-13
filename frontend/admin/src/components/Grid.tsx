@@ -1,9 +1,8 @@
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import type { ColDef, GridReadyEvent } from 'ag-grid-community';
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
 import { themeAlpine, colorSchemeDarkBlue } from 'ag-grid-community';
-import { useTheme } from '@mui/material';
 import { ColorModeContext } from '../theme/ThemeContext';
 
 ModuleRegistry.registerModules([AllCommunityModule]);
@@ -17,16 +16,23 @@ interface AgGridComponentProps {
    * 기본값: 400px
    */
   height?: number | string;
+  onCellClicked?: (event: any) => void;
 }
 
-export function Grid({ columnDefs, rowData, className, height = 400 }: AgGridComponentProps) {
+export function Grid({
+  columnDefs,
+  rowData,
+  className,
+  height = 400,
+  onCellClicked,
+}: AgGridComponentProps) {
   const onGridReady = useCallback((params: GridReadyEvent) => {
     // 컬럼 너비를 컨테이너에 맞춰 자동 조정
     params.api.sizeColumnsToFit();
   }, []);
 
   // const myTheme = themeBalham.withParams({ accentColor: 'red' });
-  const theme = useTheme();
+  // const theme = useTheme();
   const { mode } = useContext(ColorModeContext);
   const themeDarkBlue = themeAlpine.withPart(colorSchemeDarkBlue);
   const gridTheme = (mode === 'light' ? themeAlpine : themeDarkBlue).withParams({
@@ -48,6 +54,7 @@ export function Grid({ columnDefs, rowData, className, height = 400 }: AgGridCom
           resizable: true,
         }}
         onGridReady={onGridReady}
+        onCellClicked={onCellClicked}
       />
     </div>
   );

@@ -1,9 +1,19 @@
-import React, { useState, useMemo } from 'react';
-import { Box, TextField, Button, Stack } from '@mui/material';
-import { ColDef } from 'ag-grid-community';
+import React, { useState, useMemo, useCallback } from 'react';
+import {
+  Box,
+  TextField,
+  Button,
+  Stack,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from '@mui/material';
+import { CellClickedEvent, ColDef } from 'ag-grid-community';
 import { Grid } from '../components/Grid';
 import { PageContainer } from '../components/PageContainer';
 import { CommonText } from '../components/CommonText';
+import Popup from '../components/Popup';
 
 interface User {
   id: number;
@@ -30,6 +40,23 @@ const columnDefs: ColDef[] = [
 
 export default function UserSearchPage() {
   const [query, setQuery] = useState('');
+  const [openPopup, setOpenPopup] = useState(false);
+  const [cellValue, setCellValue] = useState<any>(null);
+  const [rowDataClicked, setRowDataClicked] = useState<any>(null);
+
+  // 셀 클릭 핸들러
+  const onCellClicked = useCallback((event: CellClickedEvent) => {
+    setCellValue(event.value);
+    setRowDataClicked(event.data);
+    setOpenPopup(true);
+  }, []);
+
+  const onClose = useCallback(() => {
+    setOpenPopup(false);
+    setCellValue(null);
+    setRowDataClicked(null);
+  }, []);
+
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return initialUsers;
@@ -69,7 +96,30 @@ export default function UserSearchPage() {
         </Stack>
       </Box>
 
-      <Grid className="w-[100%]" columnDefs={columnDefs} rowData={filtered} />
+      <Grid
+        className="w-[100%]"
+        columnDefs={columnDefs}
+        rowData={filtered}
+        onCellClicked={onCellClicked}
+      />
+
+      <Popup
+        open={openPopup}
+        onClose={onClose}
+        title="셀 클릭 정보"
+        content={
+          <div>
+            <p>
+              <strong>이름:</strong> {cellValue}
+            </p>
+            <p>
+              <strong>정보:</strong>
+            </p>
+            <pre>{JSON.stringify(rowDataClicked, null, 2)}</pre>
+          </div>
+        }
+        confirmText="확인"
+      ></Popup>
     </PageContainer>
   );
 }
