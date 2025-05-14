@@ -11,7 +11,6 @@ export default function Signup() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#f4f6f8',
       }}
     >
       <Paper elevation={3} sx={{ padding: 4, width: 360 }}>

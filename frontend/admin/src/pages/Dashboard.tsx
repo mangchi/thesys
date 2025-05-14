@@ -9,6 +9,7 @@ import { CommonText } from '../components/CommonText';
 import { BarChart, LineChart, PieChart } from '@mui/x-charts';
 import { useState } from 'react';
 import { GenericTabs } from '../components/GenericTabs';
+import WeatherWidget from '../components/WeatherWidget';
 
 const Dashboard = () => {
   const stats = [
@@ -156,22 +157,33 @@ const Dashboard = () => {
         {/* <Typography variant="h5" mb={3}>
         Dashboard
       </Typography> */}
-        <Grid container spacing={2} sx={{ marginTop: 2 }}>
-          {stats.map((item, index) => (
-            // <Grid item xs={12} sm={6} md={3} key={index}>
-            <Grid item xs={12} sm={6} md={3} key={index} {...(item as any)}>
-              <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', padding: 2 }}>
-                <Box sx={{ marginRight: 2 }}>{item.icon}</Box>
-                <CardContent sx={{ padding: 0 }}>
-                  <Typography variant="subtitle2" color="text.secondary">
-                    {item.title}
-                  </Typography>
-                  <Typography variant="h6">{item.value}</Typography>
-                </CardContent>
-              </Card>
+        <div className="flex">
+          <Grid container spacing={2} sx={{ marginTop: 2 }}>
+            {stats.map((item, index) => (
+              // <Grid item xs={12} sm={6} md={3} key={index}>
+              <Grid item xs={12} sm={6} md={3} key={index} {...(item as any)}>
+                <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', padding: 2 }}>
+                  <Box sx={{ marginRight: 2 }}>{item.icon}</Box>
+                  <CardContent sx={{ padding: 0 }}>
+                    <Typography variant="subtitle2" color="text.secondary">
+                      {item.title}
+                    </Typography>
+                    <Typography variant="h6">{item.value}</Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+
+          <p className="mx-4" />
+
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6} md={3}>
+              <WeatherWidget />
             </Grid>
-          ))}
-        </Grid>
+          </Grid>
+        </div>
+
         <div className="flex">
           <Card sx={{ marginTop: 3, marginRight: 2, width: '30%' }}>
             <CommonText sx={{ padding: 2 }} variantType="body">
