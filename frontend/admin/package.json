@@ -4,10 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:vault-server": "vault server -dev -dev-root-token-id=\"root-token\"",
-    "dev:vault": "cross-env VAULT_ADDR=https://mangchinas.synology.me:8200 VAULT_SKIP_VERIFY=true vault agent -config=./agent.hcl",
-    "dev:react": "vite",
-    "dev": "concurrently -k -c \"VAULT,REACT\" \"npm:dev:vault\" \"npm:dev:react\"",
+    "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "lint": "eslint 'src/**/*.{ts,tsx}'",

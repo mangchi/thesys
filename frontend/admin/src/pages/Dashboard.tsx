@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import { Box, Card, CardContent, Paper, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Card, CardContent, Chip, Paper, Tab, Tabs, Typography } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PeopleIcon from '@mui/icons-material/People';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -9,6 +9,15 @@ import { CommonText } from '../components/CommonText';
 import { BarChart, LineChart, PieChart } from '@mui/x-charts';
 import { useState } from 'react';
 import { GenericTabs } from '../components/GenericTabs';
+import WeatherWidget from '../components/WeatherWidget';
+import {
+  FormatAlignLeftOutlined,
+  HomeRepairServiceOutlined,
+  TrendingDownOutlined,
+  TrendingUpOutlined,
+} from '@mui/icons-material';
+import { blue, red } from '@mui/material/colors';
+import { color } from '@mui/system';
 
 const Dashboard = () => {
   const stats = [
@@ -16,21 +25,31 @@ const Dashboard = () => {
       title: '총 사용자 수',
       value: '1,024명',
       icon: <PeopleIcon fontSize="large" color="primary" />,
+      isLoss: true,
+      percentage: '10%',
+      extra: '100명',
     },
     {
       title: '월간 방문자 수',
       value: '8,560명',
       icon: <TrendingUpIcon fontSize="large" color="success" />,
+      percentage: '27.4%',
+      extra: '2000명',
     },
     {
       title: '총 주문 수',
       value: '324건',
       icon: <ShoppingCartIcon fontSize="large" color="secondary" />,
+      isLoss: true,
+      percentage: '56.2%',
+      extra: '150건',
     },
     {
       title: '매출 통계',
       value: '₩12,345,000',
       icon: <BarChartIcon fontSize="large" color="action" />,
+      percentage: '30.1%',
+      extra: '300만원',
     },
   ];
 
@@ -156,22 +175,66 @@ const Dashboard = () => {
         {/* <Typography variant="h5" mb={3}>
         Dashboard
       </Typography> */}
+
         <Grid container spacing={2} sx={{ marginTop: 2 }}>
           {stats.map((item, index) => (
-            // <Grid item xs={12} sm={6} md={3} key={index}>
-            <Grid item xs={12} sm={6} md={3} key={index} {...(item as any)}>
-              <Card variant="outlined" sx={{ display: 'flex', alignItems: 'center', padding: 2 }}>
-                <Box sx={{ marginRight: 2 }}>{item.icon}</Box>
+            <Grid size={3} item xs={12} sm={6} md={3} key={index} {...(item as any)}>
+              <Card
+                variant="outlined"
+                sx={{ display: 'flex', alignItems: 'center', padding: 2, height: 140 }}
+              >
+                <Box sx={{ marginRight: 2, marginBottom: 3 }}>{item.icon}</Box>
                 <CardContent sx={{ padding: 0 }}>
-                  <Typography variant="subtitle2" color="text.secondary">
+                  <Typography variant="subtitle1" color="text.secondary">
                     {item.title}
                   </Typography>
-                  <Typography variant="h6">{item.value}</Typography>
+                  <div className="flex">
+                    <Typography variant="h6">{item.value}</Typography>
+                    <Chip
+                      sx={{
+                        borderRadius: '5px',
+                        ml: 1.25,
+                        pl: 1,
+                        color: item.isLoss ? blue[500] : red[500],
+                      }}
+                      variant="outlined"
+                      color={item.isLoss ? 'primary' : 'error'}
+                      icon={
+                        item.isLoss ? (
+                          <TrendingDownOutlined style={{ color: blue[500] }} />
+                        ) : (
+                          <TrendingUpOutlined style={{ color: red[500] }} />
+                        )
+                      }
+                      // label={`${percentage}%`}
+                      size="medium"
+                      label={item.percentage}
+                    />
+                  </div>
+                  <Box sx={{ pt: 2 }}>
+                    <Typography sx={{ display: 'flex' }} variant="body2" color="text.secondary">
+                      전월대비 {''}
+                      <Typography
+                        sx={{ color: item.isLoss ? blue[500] : red[500] }}
+                        variant="body2"
+                      >
+                        {item.extra}
+                      </Typography>{' '}
+                      {item.isLoss ? '감소' : '증가'}
+                    </Typography>
+                  </Box>
                 </CardContent>
               </Card>
             </Grid>
           ))}
         </Grid>
+
+        {/* <Grid container spacing={3}>
+          <Grid item xs={12} sm={6} md={3}>
+            <WeatherWidget />
+          </Grid>
+        </Grid> */}
+
         <div className="flex">
           <Card sx={{ marginTop: 3, marginRight: 2, width: '30%' }}>
             <CommonText sx={{ padding: 2 }} variantType="body">
@@ -192,7 +255,7 @@ const Dashboard = () => {
               height={200}
             />
           </Card>
-          <Card sx={{ marginTop: 3, width: '70%' }}>
+          <Card sx={{ marginTop: 3, marginRight: 2, width: '50%' }}>
             <CommonText sx={{ padding: 2 }} variantType="body">
               City
             </CommonText>
@@ -208,6 +271,8 @@ const Dashboard = () => {
               {...chartSetting}
             />
           </Card>
+
+          <WeatherWidget sx={{ marginTop: 3, width: '30%' }} />
         </div>
         <Card sx={{ marginTop: 3, marginBottom: 3 }}>
           <CommonText sx={{ padding: 2 }} variantType="body">

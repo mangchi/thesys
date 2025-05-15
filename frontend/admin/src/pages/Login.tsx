@@ -9,6 +9,7 @@ import {
   Alert,
   Checkbox,
   FormControlLabel,
+  Divider,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -18,6 +19,7 @@ import { CommonText } from '../components/CommonText';
 import { AuthResponse, SignInPage, type AuthProvider } from '@toolpad/core/SignInPage';
 import { useTheme } from '@mui/material/styles';
 import { PageContainer } from '../components/PageContainer';
+import { blue } from '@mui/material/colors';
 
 const Login = () => {
   const theme = useTheme();
@@ -94,6 +96,14 @@ const Login = () => {
     );
   };
 
+  const LoginTitle = () => {
+    return (
+      <Typography variant="h4" sx={{ marginBottom: 2, color: blue[700] }}>
+        The System
+      </Typography>
+    );
+  };
+
   return (
     <Box
       sx={{
@@ -107,9 +117,6 @@ const Login = () => {
         // backgroundColor: '#f4f6f8',
       }}
     >
-      <Typography sx={{}} variant="h4">
-        The System
-      </Typography>
       {/* <Paper elevation={3} sx={{ padding: 4, width: 360 }}>
         <CommonText variantType="subtitle"> 로그인 </CommonText>
 
@@ -147,7 +154,9 @@ const Login = () => {
           </Link>
         </Typography>
       </Paper> */}
-
+      {/* <Typography sx={{}} variant="h4">
+        The System
+      </Typography> */}
       <SignInPage
         sx={{}}
         signIn={(provider, formData) => {
@@ -175,9 +184,14 @@ const Login = () => {
           });
         }}
         providers={providers}
-        slots={{ rememberMe: RememberMeCheckbox, signUpLink: SignUpLink }}
+        slots={{
+          rememberMe: RememberMeCheckbox,
+          signUpLink: SignUpLink,
+          title: LoginTitle,
+        }}
         slotProps={{
           form: { noValidate: true },
+          emailField: { autoFocus: true },
           rememberMe: {
             control: (
               <Checkbox
