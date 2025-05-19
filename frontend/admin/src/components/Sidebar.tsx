@@ -10,8 +10,7 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -24,32 +23,10 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { blue } from '@mui/material/colors';
 import ThemeToggleButton from './ThemeToggleButton';
 import { ColorModeContext } from '../theme/ThemeContext';
+import Badge from '@mui/material/Badge';
+import GroupIcon from '@mui/icons-material/Group';
 
 const drawerWidth = 240;
-
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
-  open?: boolean;
-}>(({ theme }) => ({
-  flexGrow: 1,
-  padding: theme.spacing(3),
-  transition: theme.transitions.create('margin', {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  marginLeft: `-${drawerWidth}px`,
-  variants: [
-    {
-      props: ({ open }) => open,
-      style: {
-        transition: theme.transitions.create('margin', {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen,
-        }),
-        marginLeft: 0,
-      },
-    },
-  ],
-}));
 
 interface AppBarProps extends MuiAppBarProps {
   open?: boolean;
@@ -75,15 +52,6 @@ const AppBar = styled(MuiAppBar, {
       },
     },
   ],
-}));
-
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
 }));
 
 export default function Sidebar() {
@@ -118,8 +86,8 @@ export default function Sidebar() {
     setOpen(true);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleDrawerClose = (newOpen: boolean) => () => {
+    setOpen(newOpen);
   };
 
   const handleDialogOpen = () => {
@@ -148,7 +116,6 @@ export default function Sidebar() {
       {/* <AppBar open={open}> */}
       <AppBar position="fixed" open={open}>
         <Toolbar sx={{ display: 'flex', alignItems: 'center' }}>
-          {/* <Toolbar sx={{ justifyContent: 'space-between' }}> */}
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -166,8 +133,8 @@ export default function Sidebar() {
           <Typography
             sx={{
               position: 'absolute',
-              left: '50%',
-              transform: 'translateX(-50%)',
+              left: '48%',
+              // transform: 'translateX(-50%)',
             }}
             variant="h6"
             noWrap
@@ -181,7 +148,12 @@ export default function Sidebar() {
             touchEvent="onTouchStart"
             onClickAway={handleDialogClose}
           >
-            <Box sx={{ position: 'relative', marginLeft: 'auto' }}>
+            <Box sx={{ display: 'flex', position: 'relative', marginLeft: 'auto' }}>
+              <IconButton>
+                <Badge variant="dot" color="error">
+                  <MailIcon sx={{ color: 'white' }} />
+                </Badge>
+              </IconButton>
               <Button
                 sx={{
                   cursor: 'pointer',
@@ -189,6 +161,7 @@ export default function Sidebar() {
                   alignItems: 'center',
                   justifyContent: 'center',
                 }}
+                // role="presentation"
                 // variant="body1"
                 onClick={handleDialogOpen}
               >
@@ -233,80 +206,27 @@ export default function Sidebar() {
             </Box>
           </ClickAwayListener>
           <ThemeToggleButton />
-
-          {/* <Dialog open={dialogOpen} onClose={handleDialogClose}>
-            <DialogTitle>사용자 메뉴</DialogTitle>
-            <DialogContent>
-              <List>
-                <ListItem disablePadding>
-                  <ListItemButton onClick={handleProfileChange}>
-                    <ListItemText primary="개인정보 변경" />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem disablePadding>
-                  <ListItemButton onClick={handleLogout}>
-                    <ListItemText primary="로그아웃" />
-                  </ListItemButton>
-                </ListItem>
-              </List>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={handleDialogClose} color="primary">
-                닫기
-              </Button>
-            </DialogActions>
-          </Dialog> */}
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        {/* <Divider />
-        <List>
-          {['DashBoard', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider /> */}
-        <List>
-          {[
-            { text: 'Dashboard', to: '/dashboard' },
-            { text: 'User', to: '/user' },
-            { text: 'Sample', to: '/sample' },
-            // { text: 'Settings', to: '/settings' },
-          ].map(({ text, to }, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton component={Link} to={to}>
-                <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+
+      <Drawer anchor="left" open={open} onClose={handleDrawerClose(false)}>
+        <Box sx={{ width: 250 }} role="presentation" onClick={handleDrawerClose(false)}>
+          <List>
+            {[
+              { text: 'Dashboard', to: '/dashboard' },
+              { text: 'User', to: '/user' },
+              { text: 'Sample', to: '/sample' },
+            ].map(({ text, to }, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton component={Link} to={to}>
+                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <GroupIcon />}</ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-      </Main>
     </Box>
   );
 }

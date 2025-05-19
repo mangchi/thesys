@@ -1,5 +1,21 @@
 import Grid from '@mui/material/Grid';
-import { Box, Card, CardContent, Chip, Paper, Tab, Tabs, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Checkbox,
+  Chip,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControlLabel,
+  Paper,
+  Tab,
+  Tabs,
+  Typography,
+} from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PeopleIcon from '@mui/icons-material/People';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -7,7 +23,7 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import { PageContainer } from '../components/PageContainer';
 import { CommonText } from '../components/CommonText';
 import { BarChart, LineChart, PieChart } from '@mui/x-charts';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { GenericTabs } from '../components/GenericTabs';
 import WeatherWidget from '../components/WeatherWidget';
 import {
@@ -19,7 +35,44 @@ import {
 import { blue, red } from '@mui/material/colors';
 import { color } from '@mui/system';
 
+const EXPIRY_KEY = 'admin_notice_dismissed_until';
+
 const Dashboard = () => {
+  const [noticeOpen, setNoticeOpen] = useState(false);
+  const [dontShowDay, setDontShowDay] = useState(false);
+
+  useEffect(() => {
+    const expiryStr = localStorage.getItem(EXPIRY_KEY);
+    const now = Date.now();
+
+    if (expiryStr) {
+      const expiry = parseInt(expiryStr, 10);
+      if (expiry > now) {
+        // 아직 유효기간 남아 있음
+        return;
+      }
+      // 유효기간 지남 → 팝업 다시 보여주기
+    }
+
+    // 처음 방문이거나, 유효기간 지났을 때만 팝업 열기
+    setNoticeOpen(true);
+  }, []);
+
+  const handleClose = () => {
+    const now = Date.now();
+
+    if (dontShowDay) {
+      // 하루(24h) 뒤까지 숨기기
+      const oneDayMs = 24 * 60 * 60 * 1000;
+      localStorage.setItem(EXPIRY_KEY, String(now + oneDayMs));
+    } else {
+      // 체크 안 했으면 영구 숨기기
+      localStorage.removeItem(EXPIRY_KEY);
+    }
+
+    setNoticeOpen(false);
+  };
+
   const stats = [
     {
       title: '총 사용자 수',
@@ -172,9 +225,6 @@ const Dashboard = () => {
         <CommonText variantType="title"> Dashboard</CommonText>
 
         <p className="my-4" />
-        {/* <Typography variant="h5" mb={3}>
-        Dashboard
-      </Typography> */}
 
         <Grid container spacing={2} sx={{ marginTop: 2 }}>
           {stats.map((item, index) => (
@@ -290,6 +340,31 @@ const Dashboard = () => {
           />
         </Card>
       </Box>
+
+      <Dialog open={noticeOpen} maxWidth="sm" fullWidth>
+        <DialogTitle>📢 공지사항</DialogTitle>
+        <DialogContent dividers>
+          <Typography variant="body1" gutterBottom>
+            안녕하세요, 관리자님!
+            <br />
+            • 새로운 기능: 사용자 통계 페이지가 추가되었습니다.
+            <br />
+            • 보안 업데이트: 비밀번호 정책이 강화되었습니다.
+            <br />• 다음 점검: 5월 25일(일) 03:00~04:00 예정입니다.
+          </Typography>
+          <FormControlLabel
+            control={
+              <Checkbox checked={dontShowDay} onChange={(e) => setDontShowDay(e.target.checked)} />
+            }
+            label="하루 동안 보지 않기"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose} variant="contained" color="primary">
+            확인
+          </Button>
+        </DialogActions>
+      </Dialog>
     </PageContainer>
   );
 };

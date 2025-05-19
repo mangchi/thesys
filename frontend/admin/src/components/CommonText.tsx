@@ -16,9 +16,10 @@ export function CommonText({
 
   const stylesByType = {
     title: {
+      position: 'relative',
       fontSize: '2rem',
       fontWeight: 700,
-      padding: '0.5rem 0',
+      padding: '0.1rem 0',
     },
     subtitle: {
       fontSize: '1.5rem',
