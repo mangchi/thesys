@@ -18,13 +18,18 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { useAuthStore } from '../stores/auth';
-import { Avatar, Button, ClickAwayListener, SxProps } from '@mui/material';
+import { Avatar, Button, ClickAwayListener, Divider, SxProps } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { blue } from '@mui/material/colors';
 import ThemeToggleButton from './ThemeToggleButton';
 import { ColorModeContext } from '../theme/ThemeContext';
 import Badge from '@mui/material/Badge';
 import GroupIcon from '@mui/icons-material/Group';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import QuizIcon from '@mui/icons-material/Quiz';
+import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import PersonIcon from '@mui/icons-material/Person';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 
 const drawerWidth = 240;
 
@@ -212,19 +217,63 @@ export default function Sidebar() {
       <Drawer anchor="left" open={open} onClose={handleDrawerClose(false)}>
         <Box sx={{ width: 250 }} role="presentation" onClick={handleDrawerClose(false)}>
           <List>
+            {[{ text: 'Dashboard', to: '/dashboard', icon: <DashboardIcon /> }].map(
+              ({ text, to }, index) => (
+                <ListItem key={text} disablePadding>
+                  <ListItemButton component={Link} to={to}>
+                    <ListItemIcon>{[<DashboardIcon />][index]}</ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItemButton>
+                </ListItem>
+              ),
+            )}
+          </List>
+          <Divider />
+          <List>
             {[
-              { text: 'Dashboard', to: '/dashboard' },
-              { text: 'User', to: '/user' },
-              { text: 'Sample', to: '/sample' },
+              { text: 'User', to: '/user', icon: <GroupIcon /> },
+              { text: 'Profile', to: '/profile' },
             ].map(({ text, to }, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton component={Link} to={to}>
-                  <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <GroupIcon />}</ListItemIcon>
+                  <ListItemIcon>{[<GroupIcon />, <PersonIcon />][index]}</ListItemIcon>
+
+                  {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <GroupIcon />}</ListItemIcon> */}
                   <ListItemText primary={text} />
                 </ListItemButton>
               </ListItem>
             ))}
           </List>
+          <Divider />
+          <List>
+            {[
+              { text: 'FAQ', to: '/faq', icon: <QuizIcon /> },
+              { text: 'Notice', to: '/notice' },
+            ].map(({ text, to }, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton component={Link} to={to}>
+                  <ListItemIcon>{[<QuizIcon />, <PriorityHighIcon />][index]}</ListItemIcon>
+
+                  {/* <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <GroupIcon />}</ListItemIcon> */}
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+          <List>
+            {[{ text: 'Sample', to: '/sample', icon: <DragIndicatorIcon /> }].map(
+              ({ text, to }, index) => (
+                <ListItem key={text} disablePadding>
+                  <ListItemButton component={Link} to={to}>
+                    <ListItemIcon>{[<DragIndicatorIcon />][index]}</ListItemIcon>
+                    <ListItemText primary={text} />
+                  </ListItemButton>
+                </ListItem>
+              ),
+            )}
+          </List>
+          <Divider />
         </Box>
       </Drawer>
     </Box>

@@ -13,6 +13,7 @@ export function PageContainer({ children, sx, ...rest }: PageContainerProps) {
         // margin: '0 auto',
         // padding: '2rem',
         width: '100%',
+        minHeight: '100vh',
         p: '3',
         ...sx,
       }}
