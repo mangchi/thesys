@@ -15,6 +15,8 @@ import {
   Tab,
   Tabs,
   Typography,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import PeopleIcon from '@mui/icons-material/People';
@@ -24,22 +26,19 @@ import { PageContainer } from '../components/PageContainer';
 import { CommonText } from '../components/CommonText';
 import { BarChart, LineChart, PieChart } from '@mui/x-charts';
 import { useEffect, useState } from 'react';
-import { GenericTabs } from '../components/GenericTabs';
 import WeatherWidget from '../components/WeatherWidget';
-import {
-  FormatAlignLeftOutlined,
-  HomeRepairServiceOutlined,
-  TrendingDownOutlined,
-  TrendingUpOutlined,
-} from '@mui/icons-material';
+import { TrendingDownOutlined, TrendingUpOutlined } from '@mui/icons-material';
 import { blue, red } from '@mui/material/colors';
-import { color } from '@mui/system';
 
 const EXPIRY_KEY = 'admin_notice_dismissed_until';
 
 const Dashboard = () => {
   const [noticeOpen, setNoticeOpen] = useState(false);
   const [dontShowDay, setDontShowDay] = useState(false);
+
+  const theme = useTheme();
+  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMd = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
     const expiryStr = localStorage.getItem(EXPIRY_KEY);
@@ -228,10 +227,30 @@ const Dashboard = () => {
 
         <Grid container spacing={2} sx={{ marginTop: 2 }}>
           {stats.map((item, index) => (
-            <Grid size={3} item xs={12} sm={6} md={3} key={index} {...(item as any)}>
+            <Grid
+              item
+              // size={3}
+              xs={12}
+              sm={6}
+              md={3}
+              key={index}
+              // 카드 높이 반응형 예시
+              sx={{
+                ...(isSm && { minHeight: 120 }),
+                ...(isMd && !isSm && { minHeight: 140 }),
+                ...(!isMd && { minHeight: 160 }),
+              }}
+            >
+              {/* <Grid size={3} item xs={12} sm={6} md={3} key={index} {...(item as any)}> */}
               <Card
                 variant="outlined"
-                sx={{ display: 'flex', alignItems: 'center', padding: 2, height: 140 }}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: isSm ? 1 : 2,
+                  height: isSm ? 100 : 140,
+                }}
+                // sx={{ display: 'flex', alignItems: 'center', padding: 2, height: 140 }}
               >
                 <Box sx={{ marginRight: 2, marginBottom: 3 }}>{item.icon}</Box>
                 <CardContent sx={{ padding: 0 }}>
@@ -279,14 +298,16 @@ const Dashboard = () => {
           ))}
         </Grid>
 
-        {/* <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={3}>
-            <WeatherWidget />
-          </Grid>
-        </Grid> */}
-
-        <div className="flex">
-          <Card sx={{ marginTop: 3, marginRight: 2, width: '30%' }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: isSm ? 'column' : 'row',
+            gap: 2,
+            mt: 3,
+          }}
+        >
+          <Card sx={{ width: isSm ? '100%' : '30%' }}>
+            {/* <Card sx={{ marginTop: 3, marginRight: 2, width: '30%' }}> */}
             <CommonText sx={{ padding: 2 }} variantType="body">
               Costs
             </CommonText>
@@ -301,11 +322,14 @@ const Dashboard = () => {
                   ],
                 },
               ]}
-              width={200}
-              height={200}
+              width={isSm ? 150 : 200}
+              height={isSm ? 150 : 200}
+              // width={200}
+              // height={200}
             />
           </Card>
-          <Card sx={{ marginTop: 3, marginRight: 2, width: '50%' }}>
+          <Card sx={{ width: isSm ? '100%' : '50%' }}>
+            {/* <Card sx={{ marginTop: 3, marginRight: 2, width: '50%' }}> */}
             <CommonText sx={{ padding: 2 }} variantType="body">
               City
             </CommonText>
@@ -319,17 +343,22 @@ const Dashboard = () => {
                 { dataKey: 'seoul', label: 'Seoul', valueFormatter },
               ]}
               {...chartSetting}
+              //반응형 설정
+              width={isSm ? 250 : undefined}
+              height={isSm ? 200 : 300}
             />
           </Card>
+          <WeatherWidget sx={{ marginTop: 3, width: isSm ? '100%' : '30%' }} />
+          {/* <WeatherWidget sx={{ marginTop: 3, width: '30%' }} /> */}
+        </Box>
 
-          <WeatherWidget sx={{ marginTop: 3, width: '30%' }} />
-        </div>
         <Card sx={{ marginTop: 3, marginBottom: 3 }}>
           <CommonText sx={{ padding: 2 }} variantType="body">
             Total
           </CommonText>
           <LineChart
-            height={300}
+            height={isSm ? 200 : 300}
+            // height={300}
             series={[
               { data: pData, label: 'pv' },
               { data: uData, label: 'uv' },
