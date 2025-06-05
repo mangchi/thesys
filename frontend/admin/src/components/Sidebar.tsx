@@ -321,16 +321,19 @@ export default function Sidebar() {
           </List>
           <Divider />
           <List>
-            {[{ text: 'Sample', to: '/sample', icon: <DragIndicatorIcon /> }].map(
-              ({ text, to }, index) => (
-                <ListItem key={text} disablePadding>
-                  <ListItemButton component={Link} to={to}>
-                    <ListItemIcon>{[<DragIndicatorIcon />][index]}</ListItemIcon>
-                    <ListItemText primary={text} />
-                  </ListItemButton>
-                </ListItem>
-              ),
-            )}
+            {[
+              { text: 'Sample', to: '/sample', icon: <DragIndicatorIcon /> },
+              { text: 'TreeDemo', to: '/treeDemo', icon: <DragIndicatorIcon /> },
+            ].map(({ text, to }, index) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton component={Link} to={to}>
+                  <ListItemIcon>
+                    {[<DragIndicatorIcon />, <DragIndicatorIcon />][index]}
+                  </ListItemIcon>
+                  <ListItemText primary={text} />
+                </ListItemButton>
+              </ListItem>
+            ))}
           </List>
           <Divider />
         </Box>

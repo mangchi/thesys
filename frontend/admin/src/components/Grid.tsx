@@ -11,10 +11,6 @@ interface AgGridComponentProps {
   columnDefs: ColDef[];
   rowData: any[];
   className: any;
-  /**
-   * 그리드 높이 (px 또는 %)
-   * 기본값: 400px
-   */
   height?: number | string;
   onCellClicked?: (event: any) => void;
 }
@@ -42,6 +38,7 @@ export function Grid({
   return (
     <div style={{ width: '100%', height }}>
       {/* <div className="ag-theme-alpine" style={{ width: '100%', height }}> */}
+      <div> </div>
       <AgGridReact
         className={className}
         theme={gridTheme}
