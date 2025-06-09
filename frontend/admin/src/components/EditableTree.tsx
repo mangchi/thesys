@@ -243,14 +243,6 @@ export default function EditableTree() {
       {/* 설명 및 레이아웃 */}
       <Paper sx={{ p: 2, mb: 2 }}>
         <Typography variant="h6">동적 리스트 트리 예제</Typography>
-        {/* <Typography variant="body2" color="text.secondary">
-          • “루트 노드 추가” 버튼으로 최상위 노드를 만들 수 있습니다.
-          <br />
-          • 각 노드 옆의 아이콘으로 “자식 추가 / 수정 / 삭제”가 가능합니다.
-          <br />
-          • 노드 이름 입력은 MUI Dialog로 처리됩니다.
-          <br />• 트리 확장/축소는 작은 화살표 아이콘을 클릭해서 제어합니다.
-        </Typography> */}
       </Paper>
 
       {/* 루트 노드 추가 버튼 */}
