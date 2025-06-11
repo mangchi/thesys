@@ -324,11 +324,12 @@ export default function Sidebar() {
             {[
               { text: 'Sample', to: '/sample', icon: <DragIndicatorIcon /> },
               { text: 'TreeDemo', to: '/treeDemo', icon: <DragIndicatorIcon /> },
+              { text: 'UploadDemo', to: '/uploadDemo', icon: <DragIndicatorIcon /> },
             ].map(({ text, to }, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton component={Link} to={to}>
                   <ListItemIcon>
-                    {[<DragIndicatorIcon />, <DragIndicatorIcon />][index]}
+                    {[<DragIndicatorIcon />, <DragIndicatorIcon />, <DragIndicatorIcon />][index]}
                   </ListItemIcon>
                   <ListItemText primary={text} />
                 </ListItemButton>
