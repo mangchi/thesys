@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Sample from './pages/Sample';
 import Profile from './pages/Profile';
+import FAQ from './pages/FAQ';
+import TreeDemo from './pages/TreeDemo';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
             <Route path="/user" element={<User />} />
             <Route path="/sample" element={<Sample />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/treeDemo" element={<TreeDemo />} />
           </Route>
         </Routes>
       </BrowserRouter>
