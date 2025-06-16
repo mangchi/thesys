@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { Box, TextField, Button, Stack } from '@mui/material';
+import { Box, TextField, Button, Stack, Fade } from '@mui/material';
 import { CellClickedEvent, ColDef } from 'ag-grid-community';
 import { Grid } from '../components/Grid';
 import { PageContainer } from '../components/PageContainer';
@@ -34,6 +34,22 @@ export default function UserSearchPage() {
   const [openPopup, setOpenPopup] = useState(false);
   const [cellValue, setCellValue] = useState<any>(null);
   const [rowDataClicked, setRowDataClicked] = useState<any>(null);
+  const [selectedRows, setSelectedRows] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>(initialUsers);
+
+  const onSelectionChanged = useCallback((event: any) => {
+    const selectedNodes = event.api.getSelectedNodes();
+    const selectedData = selectedNodes.map((node: any) => node.data);
+    setSelectedRows(selectedData);
+  }, []);
+
+  const handleDelete = useCallback(() => {
+    if (window.confirm('선택한 항목을 삭제하시겠습니까?')) {
+      const selectedIds = selectedRows.map((row) => row.id);
+      setUsers((prevUsers) => prevUsers.filter((user) => !selectedIds.includes(user.id)));
+      setSelectedRows([]);
+    }
+  }, [selectedRows]);
 
   // 셀 클릭 핸들러
   const onCellClicked = useCallback((event: CellClickedEvent) => {
@@ -65,13 +81,35 @@ export default function UserSearchPage() {
 
   return (
     <PageContainer>
-      <CommonText variantType="title"> User</CommonText>
-      {/* <Typography variant="h5" mb={3}>
-        User
-      </Typography> */}
-
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <CommonText variantType="title"> User</CommonText>
+        <Box sx={{ display: 'flex', gap: 1 }}>
+          <Button size="large" variant="contained" sx={{ whiteSpace: 'nowrap' }}>
+            +Add
+          </Button>
+          {selectedRows.length > 0 && (
+            <Fade in={selectedRows.length > 0}>
+              <Button
+                size="large"
+                variant="contained"
+                color="error"
+                sx={{ whiteSpace: 'nowrap' }}
+                // disabled={selectedRows.length === 0}
+                onClick={handleDelete}
+              >
+                {' '}
+                Delete
+              </Button>
+            </Fade>
+          )}
+        </Box>
+      </Box>
       {/* 검색 폼 */}
-      <Box component="form" onSubmit={handleSearch} sx={{ mb: 2, width: '100%' }}>
+      <Box
+        component="form"
+        onSubmit={handleSearch}
+        sx={{ border: '1px solid #ccc', p: 1, mt: 2, mb: 2, width: '100%' }}
+      >
         <Stack direction="row" spacing={2}>
           <TextField
             label="검색어 (이름, 이메일, 국가)"
@@ -92,6 +130,8 @@ export default function UserSearchPage() {
         columnDefs={columnDefs}
         rowData={filtered}
         onCellClicked={onCellClicked}
+        rowSelectionMode="multiRow"
+        onSelectionChanged={onSelectionChanged}
       />
 
       <Popup

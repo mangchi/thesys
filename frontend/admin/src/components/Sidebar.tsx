@@ -82,24 +82,6 @@ export default function Sidebar() {
     bgcolor: 'background.paper',
   };
 
-  // const styles: SxProps = {
-  //   position: 'absolute',
-  //   top: 60,
-  //   // right: 100,
-  //   left: 0.5,
-  //   // position: 'absolute',
-  //   // top: 60,
-  //   // right: '10%',
-  //   // left: 0,
-  //   zIndex: 10,
-  //   width: '160px',
-  //   border: '1px solid #ccc',
-  //   borderRadius: '10px',
-  //   // p: 2,
-  //   padding: '10px',
-  //   bgcolor: 'background.paper',
-  // };
-
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -216,11 +198,6 @@ export default function Sidebar() {
                 {!isSm && (
                   <Typography sx={{ color: 'white', ml: 1 }}>{user?.name || 'Guest'}</Typography>
                 )}
-                {/* <Avatar sx={{ bgcolor: mode === 'light' ? blue[700] : '#1d1d1d' }}>
-                  <AccountCircleIcon sx={{ color: mode === 'light' ? 'white' : 'white' }} />
-                </Avatar>
-                <Typography sx={{ color: 'white' }}>{user?.name || 'Guest'}</Typography> */}
-                {/* 👤 {user?.name || '게스트'} */}
               </Button>
               {dialogOpen ? (
                 <>
