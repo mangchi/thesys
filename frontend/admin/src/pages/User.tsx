@@ -1,10 +1,12 @@
 import React, { useState, useMemo, useCallback } from 'react';
-import { Box, TextField, Button, Stack, Fade } from '@mui/material';
+import { Box, TextField, Button, Stack, Fade, Paper, Collapse, Divider } from '@mui/material';
 import { CellClickedEvent, ColDef } from 'ag-grid-community';
 import { Grid } from '../components/Grid';
 import { PageContainer } from '../components/PageContainer';
 import { CommonText } from '../components/CommonText';
 import Popup from '../components/Popup';
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 interface User {
   id: number;
@@ -36,6 +38,16 @@ export default function UserSearchPage() {
   const [rowDataClicked, setRowDataClicked] = useState<any>(null);
   const [selectedRows, setSelectedRows] = useState<User[]>([]);
   const [users, setUsers] = useState<User[]>(initialUsers);
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+
+  const [nameQuery, setNameQuery] = useState('');
+  const [emailQuery, setEmailQuery] = useState('');
+  const [countryQuery, setCountryQuery] = useState('');
+  const [ageRange, setAgeRange] = useState({ min: '', max: '' });
+
+  const toggleSearch = () => {
+    setIsSearchVisible(prev => !prev);
+  };
 
   const onSelectionChanged = useCallback((event: any) => {
     const selectedNodes = event.api.getSelectedNodes();
@@ -65,15 +77,30 @@ export default function UserSearchPage() {
   }, []);
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return initialUsers;
-    return initialUsers.filter(
-      (user) =>
-        user.name.toLowerCase().includes(q) ||
-        user.email.toLowerCase().includes(q) ||
-        user.country.toLowerCase().includes(q),
-    );
-  }, [query]);
+    return initialUsers.filter((user) => {
+      const matchName = nameQuery.trim() === '' ||
+        user.name.toLowerCase().includes(nameQuery.toLowerCase());
+      const matchEmail = emailQuery.trim() === '' ||
+        user.email.toLowerCase().includes(emailQuery.toLowerCase());
+      const matchCountry = countryQuery.trim() === '' ||
+        user.country.toLowerCase().includes(countryQuery.toLowerCase());
+      const matchAge = (!ageRange.min || user.age >= Number(ageRange.min)) &&
+        (!ageRange.max || user.age <= Number(ageRange.max));
+
+      return matchName && matchEmail && matchCountry && matchAge;
+    });
+  }, [nameQuery, emailQuery, countryQuery, ageRange]);
+
+  // const filtered = useMemo(() => {
+  //   const q = query.trim().toLowerCase();
+  //   if (!q) return initialUsers;
+  //   return initialUsers.filter(
+  //     (user) =>
+  //       user.name.toLowerCase().includes(q) ||
+  //       user.email.toLowerCase().includes(q) ||
+  //       user.country.toLowerCase().includes(q),
+  //   );
+  // }, [query]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault(); // 폼 제출 시 리로드 방지
@@ -81,9 +108,114 @@ export default function UserSearchPage() {
 
   return (
     <PageContainer>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+
+      <Box sx={{ display: 'flex' }}>
         <CommonText variantType="title"> User</CommonText>
-        <Box sx={{ display: 'flex', gap: 1 }}>
+
+      </Box>
+      <Paper
+        elevation={3}
+        sx={{
+          // maxWidth: 480,
+          mx: 'auto',
+          mt: 4,
+          p: 3,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        {/* 검색 Form OPEN */}
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start' }}>
+          <Button
+            size="large"
+            variant="contained"
+            onClick={toggleSearch}
+            sx={{ whiteSpace: 'nowrap' }}
+          >
+            {isSearchVisible ? <><KeyboardArrowDownIcon />search </> : <><KeyboardArrowRightIcon /> search </>}</Button>
+        </Box>
+        {/* 검색 폼 */}
+        <Collapse in={isSearchVisible} timeout={700}>
+          <Box
+            component="form"
+            onSubmit={handleSearch}
+            sx={{ border: '1px solid #ccc', width: '100%' }}
+          >
+            <Box
+              component="form"
+              onSubmit={handleSearch}
+              sx={{ p: 1, width: '100%' }}
+            >
+              <Stack direction="row" spacing={{ xs: 1, sm: 2 }} sx={{ p: 1 }} divider={<Divider orientation="vertical" flexItem />}>
+
+
+                <TextField
+                  label="이름"
+                  variant="outlined"
+                  size="small"
+                  value={nameQuery}
+                  onChange={(e) => setNameQuery(e.target.value)}
+                  fullWidth
+                />
+
+                <TextField
+                  label="국가"
+                  variant="outlined"
+                  size="small"
+                  value={countryQuery}
+                  onChange={(e) => setCountryQuery(e.target.value)}
+                  fullWidth
+                />
+              </Stack>
+
+              <Stack sx={{ p: 1 }}>
+                <TextField
+                  label="이메일"
+                  variant="outlined"
+                  size="small"
+                  value={emailQuery}
+                  onChange={(e) => setEmailQuery(e.target.value)}
+                  fullWidth
+                />
+              </Stack>
+              <Stack direction="row" spacing={{ xs: 1, sm: 2 }} divider={<Divider orientation="vertical" flexItem />} sx={{ p: 1 }}>
+
+                <TextField
+                  label="최소 나이"
+                  type="number"
+                  variant="outlined"
+                  size="small"
+                  value={ageRange.min}
+                  onChange={(e) => setAgeRange(prev => ({ ...prev, min: e.target.value }))}
+                  fullWidth
+                />
+                <TextField
+                  label="최대 나이"
+                  type="number"
+                  variant="outlined"
+                  size="small"
+                  value={ageRange.max}
+                  onChange={(e) => setAgeRange(prev => ({ ...prev, max: e.target.value }))}
+                  fullWidth
+                />
+
+              </Stack>
+              {/* 검색 버튼 추가 */}
+              <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1, mt: 1 }}>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  size="large"
+
+                >
+                  검색
+                </Button>
+              </Box>
+            </Box>
+          </Box>
+        </Collapse>
+        <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'flex-end' }}>
           <Button size="large" variant="contained" sx={{ whiteSpace: 'nowrap' }}>
             +Add
           </Button>
@@ -103,36 +235,15 @@ export default function UserSearchPage() {
             </Fade>
           )}
         </Box>
-      </Box>
-      {/* 검색 폼 */}
-      <Box
-        component="form"
-        onSubmit={handleSearch}
-        sx={{ border: '1px solid #ccc', p: 1, mt: 2, mb: 2, width: '100%' }}
-      >
-        <Stack direction="row" spacing={2}>
-          <TextField
-            label="검색어 (이름, 이메일, 국가)"
-            variant="outlined"
-            size="small"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            fullWidth
-          />
-          <Button type="submit" variant="contained" sx={{ whiteSpace: 'nowrap' }}>
-            검색
-          </Button>
-        </Stack>
-      </Box>
-
-      <Grid
-        className="w-[100%]"
-        columnDefs={columnDefs}
-        rowData={filtered}
-        onCellClicked={onCellClicked}
-        rowSelectionMode="multiRow"
-        onSelectionChanged={onSelectionChanged}
-      />
+        <Grid
+          className="w-[100%]"
+          columnDefs={columnDefs}
+          rowData={filtered}
+          onCellClicked={onCellClicked}
+          rowSelectionMode="multiRow"
+          onSelectionChanged={onSelectionChanged}
+        />
+      </Paper>
 
       <Popup
         open={openPopup}
@@ -151,6 +262,6 @@ export default function UserSearchPage() {
         }
         confirmText="확인"
       ></Popup>
-    </PageContainer>
+    </PageContainer >
   );
 }
